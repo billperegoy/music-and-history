@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   def index
     @events = events_on_this_date_in_history
-    #@events = Event.all
   end
 
   private
