@@ -1,0 +1,9 @@
+<h1>Today in History</h1>
+<% @events.each do |event| %>
+  <table border=1>
+    <tr>
+      <td><%= event.date %> </td>
+      <td><%= event.description %> </td>
+    </tr>
+  </table>
+<% end %>
