@@ -53,6 +53,7 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.6)
       execjs
+    bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bourbon (4.2.7)
@@ -60,6 +61,10 @@ GEM
       thor (~> 0.19)
     builder (3.2.2)
     byebug (8.2.5)
+    clearance (1.14.0)
+      bcrypt
+      email_validator (~> 1.4)
+      rails (>= 3.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -71,6 +76,8 @@ GEM
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.2)
+    email_validator (1.6.0)
+      activemodel
     erubis (2.7.0)
     escape (0.0.4)
     execjs (2.6.0)
@@ -180,6 +187,7 @@ DEPENDENCIES
   administrate
   administrate-field-image
   byebug
+  clearance
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
