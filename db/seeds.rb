@@ -1,13 +1,41 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
 require 'textractor'
+
+def categorize_description(text)
+  m = text.match(/ is born/)
+  if m
+    words = m.pre_match
+
+    # Get rid of time of birth at front: "08:30"
+    words.sub!(/\d{2}:\d{2} /, '')
+
+    # Get rid of "About 12:30."
+    words.sub!(/^[^\.]*\./, '')
+
+
+    puts "--- BORN: #{words}"
+
+    if words.split(/\s+/).length > 6
+      puts " ? CHECK: #{words}"
+    end
+
+    return :birth
+  end
+
+
+  m = text.match(/ dies/)
+  if m
+    composer = m.pre_match
+    #puts "--- DIED: #{composer}"
+    return :death
+  end
+
+  m = text.match(/performs/)
+  if m
+    return :performance
+  end
+
+  return :none
+end
 
 def process_file(file_name)
   x = Textractor.text_from_path(file_name)
@@ -21,11 +49,12 @@ def process_file(file_name)
     if m
       date = "#{m['month']} #{m['day']} #{m['year']}"
       description =  m['text'].gsub(/ +/, ' ');
-      Event.create({date: date, description: description})
     else
-      description =  line.gsub(/ +/, ' ');
-      Event.create({date: date, description: description})
+      description = line.gsub(/ +/, ' ');
     end
+
+    category = categorize_description(description)
+    Event.create({date: date, category: category.to_s, description: description})
   end
 end 
 

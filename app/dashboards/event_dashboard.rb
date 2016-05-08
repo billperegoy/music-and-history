@@ -11,8 +11,10 @@ class EventDashboard < Administrate::BaseDashboard
     id: Field::Number,
     date: Field::DateTime,
     description: Field::String,
+    category: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    category: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,6 +26,7 @@ class EventDashboard < Administrate::BaseDashboard
     :id,
     :date,
     :description,
+    :category,
     :created_at,
   ].freeze
 
@@ -33,8 +36,10 @@ class EventDashboard < Administrate::BaseDashboard
     :id,
     :date,
     :description,
+    :category,
     :created_at,
     :updated_at,
+    :category,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -43,6 +48,7 @@ class EventDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :date,
     :description,
+    :category,
   ].freeze
 
   # Overwrite this method to customize how events are displayed
