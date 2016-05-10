@@ -11,13 +11,6 @@ def categorize_description(text)
     # Get rid of "About 12:30."
     words.sub!(/^[^\.]*\./, '')
 
-
-    puts "--- BORN: #{words}"
-
-    if words.split(/\s+/).length > 6
-      puts " ? CHECK: #{words}"
-    end
-
     return :birth
   end
 
@@ -29,7 +22,7 @@ def categorize_description(text)
     return :death
   end
 
-  m = text.match(/performs/)
+  m = text.match(/ performs/) || text.match(/ is performed/)
   if m
     return :performance
   end
