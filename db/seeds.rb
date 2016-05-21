@@ -51,7 +51,7 @@ def process_file(file_name, category_lookup, composer_lookup)
       if description.match(regexp)
         # Can we craete a link here to all of the entries for this composer?
         #puts "Match: #{name}"
-        description = description.sub(regexp, "<a href=\"#\">#{name}<\/a>")
+        description = description.sub(regexp, "<a href=\"/composers/#{composer[:id]}\">#{name}<\/a>")
         #puts description
       end
     end
