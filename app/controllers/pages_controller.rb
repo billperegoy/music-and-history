@@ -2,9 +2,6 @@ class PagesController < ApplicationController
   def about
   end
 
-  def composers
-  end
-
   def contact
   end
 

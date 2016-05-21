@@ -29,7 +29,7 @@ def categorize_description(text, category_lookup)
   return category_lookup[:none]
 end
 
-def process_file(file_name, category_lookup)
+def process_file(file_name, category_lookup, composer_lookup)
   x = Textractor.text_from_path(file_name)
   lines = x.split("\n")
   
@@ -43,6 +43,17 @@ def process_file(file_name, category_lookup)
       description =  m['text'].gsub(/ +/, ' ');
     else
       description = line.gsub(/ +/, ' ');
+    end
+
+    composer_lookup.each do |composer|
+      name = "#{composer[:first_name]} #{composer[:last_name]}"
+      regexp = Regexp.new(name)
+      if description.match(regexp)
+        # Can we craete a link here to all of the entries for this composer?
+        #puts "Match: #{name}"
+        description = description.sub(regexp, "<a href=\"#\">#{name}<\/a>")
+        #puts description
+      end
     end
 
     category = categorize_description(description, category_lookup)
@@ -65,16 +76,18 @@ category_lookup = {
   none: category_none.id
 }
 
+composer_lookup = []
 CSV.foreach("/Users/bill/Dropbox/musicandhistory/composers-annie.csv") do |row|
   first_name = row[0]
   last_name = row[1]
-  Composer.create(first_name: first_name, last_name: last_name)
+  composer = Composer.create(first_name: first_name, last_name: last_name)
+  composer_lookup << {id: composer.id, last_name: last_name,  first_name: first_name}
 end
 
 files = Dir.glob("/Users/bill/Dropbox/musicandhistory/[0-9]*")
 files.each do |file|
   unless file.match(/anniversaries/)
     puts "Processing #{file}"
-    process_file(file, category_lookup)
+    process_file(file, category_lookup, composer_lookup)
   end
 end

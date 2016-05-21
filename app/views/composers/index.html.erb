@@ -4,7 +4,7 @@
   <% @composers.each do |composer| %>
     <tr>
       <td><%= composer.first_name %> </td>
-      <td><%= composer.last_name %></td>
+      <td><%= link_to "#{composer.last_name}", composer %></td>
     </tr>
   <% end %>
 </table>
