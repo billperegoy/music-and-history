@@ -6,6 +6,6 @@ class EventsController < ApplicationController
   private
   def events_on_this_date_in_history
     today = Date.today
-    Event.by_month(today.month).by_day(today.day)
+    Event.by_month(today.month).by_day(today.day).order(date: :asc)
   end
 end

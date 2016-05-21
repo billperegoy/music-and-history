@@ -1,0 +1,5 @@
+<table border=1>
+  <% events.each do |event| %>
+    <%= render partial: "single_event", locals: {event: event} %>
+  <% end %>
+</table>
