@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :events, only: [:index]
+  resources :composers, only: [:index]
   root to: "events#index"
 
   get 'pages/about'

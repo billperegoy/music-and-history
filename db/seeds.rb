@@ -1,3 +1,4 @@
+require 'csv'
 require 'textractor'
 
 def categorize_description(text, category_lookup)
@@ -51,6 +52,7 @@ end
 
 Category.delete_all
 Event.delete_all
+Composer.delete_all
 
 category_birth = Category.create(name: 'birth')
 category_death = Category.create(name: 'death')
@@ -62,6 +64,12 @@ category_lookup = {
   performance: category_performance.id,
   none: category_none.id
 }
+
+CSV.foreach("/Users/bill/Dropbox/musicandhistory/composers-annie.csv") do |row|
+  first_name = row[0]
+  last_name = row[1]
+  Composer.create(first_name: first_name, last_name: last_name)
+end
 
 files = Dir.glob("/Users/bill/Dropbox/musicandhistory/[0-9]*")
 files.each do |file|

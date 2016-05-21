@@ -1,0 +1,11 @@
+<h1>Composer List</h1>
+
+<table border="1">
+  <% @composers.each do |composer| %>
+    <tr>
+      <td><%= composer.first_name %> </td>
+      <td><%= composer.last_name %></td>
+    </tr>
+  <% end %>
+</table>
+
