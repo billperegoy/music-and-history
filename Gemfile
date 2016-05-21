@@ -51,3 +51,4 @@ gem 'administrate'
 gem "administrate-field-image"
 gem 'clearance'
 gem 'puma'
+gem 'rails_12factor'
