@@ -77,14 +77,14 @@ category_lookup = {
 }
 
 composer_lookup = []
-CSV.foreach("/Users/bill/Dropbox/musicandhistory/composers-annie.csv") do |row|
+CSV.foreach("db/musicandhistory/composers-annie.csv") do |row|
   first_name = row[0]
   last_name = row[1]
   composer = Composer.create(first_name: first_name, last_name: last_name)
   composer_lookup << {id: composer.id, last_name: last_name,  first_name: first_name}
 end
 
-files = Dir.glob("/Users/bill/Dropbox/musicandhistory/[0-9]*")
+files = Dir.glob("db/musicandhistory/[0-9]*")
 files.each do |file|
   unless file.match(/anniversaries/)
     puts "Processing #{file}"
