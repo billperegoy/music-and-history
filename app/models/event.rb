@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  belongs_to :category
+
   def self.by_month(month)
     where('extract(month from date) = ?', month)
   end

@@ -1,6 +1,6 @@
 require 'textractor'
 
-def categorize_description(text)
+def categorize_description(text, category_lookup)
   m = text.match(/ is born/)
   if m
     words = m.pre_match
@@ -11,26 +11,24 @@ def categorize_description(text)
     # Get rid of "About 12:30."
     words.sub!(/^[^\.]*\./, '')
 
-    return :birth
+    return category_lookup[:birth]
   end
 
 
   m = text.match(/ dies/)
   if m
-    composer = m.pre_match
-    #puts "--- DIED: #{composer}"
-    return :death
+    return category_lookup[:death]
   end
 
   m = text.match(/ performs/) || text.match(/ is performed/)
   if m
-    return :performance
+    return category_lookup[:performance]
   end
 
-  return :none
+  return category_lookup[:none]
 end
 
-def process_file(file_name)
+def process_file(file_name, category_lookup)
   x = Textractor.text_from_path(file_name)
   lines = x.split("\n")
   
@@ -46,24 +44,29 @@ def process_file(file_name)
       description = line.gsub(/ +/, ' ');
     end
 
-    category = categorize_description(description)
-    #Event.create({date: date, category: category.to_s, description: description})
-    Event.create({date: date, description: description})
+    category = categorize_description(description, category_lookup)
+    Event.create({date: date, category_id: category, description: description})
   end
 end 
 
 Category.delete_all
 Event.delete_all
 
-Category.create(name: 'birth')
-Category.create(name: 'death')
-Category.create(name: 'performance')
-Category.create(name: 'none')
+category_birth = Category.create(name: 'birth')
+category_death = Category.create(name: 'death')
+category_performance = Category.create(name: 'performance')
+category_none = Category.create(name: 'none')
+category_lookup = {
+  birth: category_birth.id,
+  death: category_death.id,
+  performance: category_performance.id,
+  none: category_none.id
+}
 
 files = Dir.glob("/Users/bill/Dropbox/musicandhistory/[0-9]*")
 files.each do |file|
   unless file.match(/anniversaries/)
     puts "Processing #{file}"
-    process_file(file)
+    process_file(file, category_lookup)
   end
 end
