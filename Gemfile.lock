@@ -192,6 +192,7 @@ PLATFORMS
 DEPENDENCIES
   administrate
   administrate-field-image
+  bourbon
   byebug
   clearance
   coffee-rails (~> 4.1.0)
