@@ -47,11 +47,19 @@ def process_file(file_name)
     end
 
     category = categorize_description(description)
-    Event.create({date: date, category: category.to_s, description: description})
+    #Event.create({date: date, category: category.to_s, description: description})
+    Event.create({date: date, description: description})
   end
 end 
 
+Category.delete_all
 Event.delete_all
+
+Category.create(name: 'birth')
+Category.create(name: 'death')
+Category.create(name: 'performance')
+Category.create(name: 'none')
+
 files = Dir.glob("/Users/bill/Dropbox/musicandhistory/[0-9]*")
 files.each do |file|
   unless file.match(/anniversaries/)
