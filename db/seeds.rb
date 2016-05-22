@@ -45,19 +45,21 @@ def process_file(file_name, category_lookup, composer_lookup)
       description = line.gsub(/ +/, ' ');
     end
 
+    composers = []
     composer_lookup.each do |composer|
       name = "#{composer[:first_name]} #{composer[:last_name]}"
       regexp = Regexp.new(name)
       if description.match(regexp)
-        # Can we craete a link here to all of the entries for this composer?
-        #puts "Match: #{name}"
+        composers << composer[:id]
         description = description.sub(regexp, "<a href=\"/composers/#{composer[:id]}\">#{name}<\/a>")
-        #puts description
       end
     end
 
     category = categorize_description(description, category_lookup)
-    Event.create({date: date, category_id: category, description: description})
+    event = Event.create({date: date, category_id: category, description: description})
+    composers.each do |composer|
+      EventComposerConnector.create(event_id: event.id, composer_id: composer) 
+    end
   end
 end 
 
