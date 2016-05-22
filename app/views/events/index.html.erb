@@ -6,3 +6,6 @@
 <br><br>
 
 <%= render partial: "event_list", locals: {events: @events} %>
+
+<h1>Random Event From Today</h1>
+<%= render partial: "event_list", locals: {events: @random_events} %>
