@@ -21,7 +21,7 @@ def categorize_description(text, category_lookup)
     return category_lookup[:death]
   end
 
-  m = text.match(/ performs/) || text.match(/ is performed/)
+  m = text.match(/ performs/) || text.match(/ is performed/) || text.match(/ performance/) || text.match(/ premier/)
   if m
     return category_lookup[:performance]
   end
