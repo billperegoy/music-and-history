@@ -1,0 +1,17 @@
+ul {
+  list-style-type: none;
+}
+
+nav {
+  text-align: center;
+  li {
+    display: inline;
+    a {
+      font-family: $quicksand-font-family;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      padding-right: 50px;
+    }
+  }
+}
