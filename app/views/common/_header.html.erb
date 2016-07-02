@@ -1,5 +1,12 @@
 <div class="header">
-  <%= link_to image_tag("example-logo.png", height: 105, width: 210), root_path %>
+  <div class="page-logo">
+    <%= link_to image_tag("logo.png"), root_path %>
+  </div>
+  <form>
+    <%= image_tag("search-icon.png", class: "search-icon") %>
+    <input class="search" type="text" placeholder="Search..." required>
+  </form>
+  <div class="page-tagline">A CHRONOLOGICAL VIEW OF WESTERN MUSIC HISTORY IN THE CONTEXT OF WORLD EVENTS</div>
   <nav>
     <ul>
       <li><%= link_to "home", root_path %></li>

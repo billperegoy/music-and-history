@@ -1,11 +1,19 @@
-<h1>Today in History</h1>
-<label>Start Date</label>
-<input type="date" value="2010-03-05"></input>
-<label>End Date</label>
-<input type="date" value="2010-03-10"></input>
-<br><br>
+<div class="landing-page-body">
+  <div class="headline-box">Choose a date to see what happened in music and history</div>
+  <input class="date-select-from" type="date" value="2010-03-05"></input>
+  <button class="date-select-button">go</button>
+</div>
 
+<!--
 <%= render partial: "event_list", locals: {events: @events} %>
-
-<h1>Random Event From Today</h1>
-<%= render partial: "event_list", locals: {events: @random_events} %>
+-->
+<div class="footer">
+  <div class="footer-separator">
+  </div>
+  <div class="footer-body">
+    <div class="back-to-top">back to top</div>
+    <div class="headline">Today in Music History: <%= todays_formatted_date_no_year %></div>
+    <%= render partial: "footer_event", locals: {event: @random_event} %>
+    <button class="more-events-button">more events</button>
+  </div>
+</div>

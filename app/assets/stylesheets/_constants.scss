@@ -5,17 +5,20 @@ $dark-blue: #1b1464;
 $orange: #faaf3b;
 $bright-green: #b9ff44;
 $dark-grey: #333333;
+$light-grey: #666666;
 $light-yellow: #fffce8;
 
 // Derived colors
-$light-blue: lighten($light-blue, 85%);
+$light-light-blue: lighten($light-blue, 15%);
 $light-orange: lighten($orange, 85%);
 $light-green: lighten($bright-green, 80%);
 
 // Functional color names
 $header-color: $pink;
 $date-color: $pink;
-$footer-color: $light-blue;
+$footer-color: $light-light-blue;
+$nav-background-color: $light-blue;
+$button-text-color: $light-blue;
 $link-color: $dark-blue;
 $button-outline-color: $dark-blue;
 $footer-separator-color: $orange;
@@ -24,3 +27,4 @@ $main-page-background-color: $light-yellow;
 $today-in-history-bckground-color: $light-blue;
 $composers-page-background-color: $light-orange;
 $about-page-backgroud-color: $light-green;
+$tagline-color: $light-grey;

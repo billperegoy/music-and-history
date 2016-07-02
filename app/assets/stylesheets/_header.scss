@@ -4,6 +4,9 @@ ul {
 
 nav {
   text-align: center;
+  background-color: $nav-background-color;
+  background-color: $light-blue;
+  padding: 0px 0 0px 0;
   li {
     display: inline;
     a {
@@ -11,7 +14,35 @@ nav {
       font-size: 20px;
       font-weight: bold;
       text-decoration: none;
+      color: white;
       padding-right: 50px;
     }
   }
 }
+
+.page-logo {
+}
+
+.page-tagline {
+  font-family: $quicksand-font-family;
+  font-size: 20px;
+  color: $tagline-color;;
+}
+
+
+form {
+                width:500px;
+                margin:50px auto;
+}
+
+.search-icon {
+  padding-top: 0px;
+}
+
+.search {
+                padding:8px 15px;
+                background:rgba(50, 50, 50, 0.2);
+                border-radius: 15px;
+                border: 1px #000 solid;
+}
+
