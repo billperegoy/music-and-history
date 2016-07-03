@@ -1,0 +1,43 @@
+.footer {
+  font-family: $arial-font-family;
+
+  .footer-separator {
+    background-color: $footer-separator-color;
+    height: 24px;
+  }
+
+  .footer-body {
+    background-color: $footer-color;
+    font-family: $arial-font-family;
+    padding-top: 32px;
+    padding-left: 30px;
+    font-weight: bold;
+    color: white;
+    font-size: 16px;
+
+    .headline {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .back-to-top {
+    font-size: 18px;
+    float: right;
+    margin-right: 100px;
+    }
+
+  .more-events-button {
+    @include border-top-radius(12px);
+    @include border-bottom-radius(12px);
+    background-color: white;
+    border: 3px solid $button-outline-color;
+    font-family: $quicksand-font-family;
+    font-size: 30px;
+    color: $button-text-color;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 500px;
+    margin-bottom: 30px;
+  }
+  }
+}

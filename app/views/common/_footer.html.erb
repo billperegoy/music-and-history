@@ -1,1 +1,10 @@
-<p>This is the footer</p>
+<div class="footer">
+  <div class="footer-separator">
+  </div>
+  <div class="footer-body">
+    <div class="back-to-top">back to top</div>
+    <div class="headline">Today in Music History: <%= todays_formatted_date_no_year %></div>
+    <%= render partial: "common/footer_event", locals: {event: @random_event} %>
+    <button class="more-events-button">more events</button>
+  </div>
+</div>

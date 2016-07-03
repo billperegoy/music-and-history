@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index]
   resources :composers, only: [:index, :show]
-  root to: "events#index"
+  root to: "pages#home"
 
+  get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
   get 'pages/links'
