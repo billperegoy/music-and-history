@@ -1,0 +1,27 @@
+.page-body {
+  h1 {
+    font-family: $roboto-slab-font-family;
+    font-size: 36px;
+    font-weight: bold;
+    color: $header-color;
+  }
+}
+
+.page-content {
+  @include border-top-radius(20px);
+  @include border-bottom-radius(20px);
+  background-color: white;
+  margin: 30px;
+}
+
+.composers-page {
+ background-color: $composers-page-background-color;
+}
+
+.composer-page {
+ background-color: $composers-page-background-color;
+}
+
+.events-page {
+ background-color: $light-light-blue;
+}

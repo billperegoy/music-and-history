@@ -1,26 +1,29 @@
-<h1>Composer List</h1>
+<div class="page-body composers-page">
+  <h1>Composers</h1>
 
-<a name="#top"></a>
+  <a name="#top"></a>
 
-<% groups = @composers.group_by { |c| c.last_name[0,1] }%>
+  <% groups = @composers.group_by { |c| c.last_name[0,1] }%>
 
-<% groups.each_key do |letter| %>
-  <span><a href="#<%= letter.downcase %>"><%= letter %></a></span>
-<% end %>
+  <div class="page-content composers-content">
+    <% groups.each_key do |letter| %>
+      <span><a href="#<%= letter.downcase %>"><%= letter %></a></span>
+    <% end %>
 
-<div class="composer-list">
-  <% groups.each_slice(13) do |half_group| %>
-    <div class="composer-column">
-      <% half_group.each do |letter, composers| %>
-        <div class="composer-letter-group">
-          <a name="<%= letter.downcase %>"</a>
-          <p> <%= letter %>  <a href="#top">(back to top)</a></p>
-          <% composers.each do |composer| %>
-            <p><%= link_to full_name(composer), composer %></p>
+    <div class="composer-list">
+      <% groups.each_slice(13) do |half_group| %>
+        <div class="composer-column">
+          <% half_group.each do |letter, composers| %>
+            <div class="composer-letter-group">
+              <a name="<%= letter.downcase %>"</a>
+              <p> <%= letter %>  <a href="#top">(back to top)</a></p>
+              <% composers.each do |composer| %>
+                <p><%= link_to full_name(composer), composer %></p>
+              <% end %>
+            </div>
           <% end %>
         </div>
       <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
-
