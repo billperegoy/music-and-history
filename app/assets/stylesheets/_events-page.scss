@@ -1,0 +1,11 @@
+.events-this-day-page {
+  background-color: $today-in-history-bckground-color;
+}
+
+.single-event {
+  background-color: white;
+  margin: 10px 30px 10px 30px;
+  padding: 5px 10px 5px 10px 10px;
+  @include border-top-radius(12px);
+  @include border-bottom-radius(12px);
+}

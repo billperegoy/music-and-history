@@ -1,0 +1,10 @@
+<div class="single-event">
+  <div>
+    <%= image_tag(event_icon_for_category(event.category.name)) %>
+  </div>
+  <div>
+    <span><%= formatted_date(event.date) %></span>
+    <span>: </span>
+    <span><%= event.description.html_safe %></span>
+  </div>
+</div>

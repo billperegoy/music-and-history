@@ -1,1 +1,4 @@
-<%= render partial: "event_list", locals: {events: @events} %>
+<div class="events-this-day-page">
+  <h1> Today in History: <%= todays_formatted_date_no_year %></h1>
+  <%= render partial: "event_list_today", locals: {events: @events} %>
+</div>
