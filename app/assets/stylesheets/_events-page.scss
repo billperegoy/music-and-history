@@ -8,4 +8,15 @@
   padding: 5px 10px 5px 10px 10px;
   @include border-top-radius(12px);
   @include border-bottom-radius(12px);
+
+  @include display(flex);
+  @include flex-direction(row);
+}
+
+.event-icon {
+  @include flex(1);
+}
+
+.event-body {
+  @include flex(11);
 }

@@ -1,20 +1,29 @@
 <div class="header">
   <a name="page_top"</a>
-  <div class="page-logo">
-    <%= link_to image_tag("logo.png"), root_path %>
+
+  <div class="logo-row">
+    <div class="page-logo">
+      <%= link_to image_tag("logo.png"), root_path %>
+    </div>
+    <form class="seach-box">
+      <%= image_tag("search-icon.png", class: "search-icon") %>
+      <input class="search" type="text" placeholder="Search..." required>
+    </form>
   </div>
-  <form>
-    <%= image_tag("search-icon.png", class: "search-icon") %>
-    <input class="search" type="text" placeholder="Search..." required>
-  </form>
-  <div class="page-tagline">A CHRONOLOGICAL VIEW OF WESTERN MUSIC HISTORY IN THE CONTEXT OF WORLD EVENTS</div>
-  <nav>
-    <ul>
-      <li><%= link_to "home", root_path %></li>
-      <li><%= link_to "about", pages_about_path %></li>
-      <li><%= link_to "composers", composers_path %></li>
-      <li><%= link_to "contact", pages_contact_path %></li>
-      <li><%= link_to "links", pages_links_path %></li>
-      <li><%= link_to "resources", pages_resources_path %></li>
-  </nav>
+
+  <div class="page-tagline">
+    A CHRONOLOGICAL VIEW OF WESTERN MUSIC HISTORY IN THE CONTEXT OF WORLD EVENTS
+  </div>
+
+  <div class="nav-row">
+    <nav>
+      <ul>
+        <li><%= link_to "home", root_path %></li>
+        <li><%= link_to "about", pages_about_path %></li>
+        <li><%= link_to "composers", composers_path %></li>
+        <li><%= link_to "contact", pages_contact_path %></li>
+        <li><%= link_to "links", pages_links_path %></li>
+        <li><%= link_to "resources", pages_resources_path %></li>
+    </nav>
+  </div>
 </div>

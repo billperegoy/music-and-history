@@ -2,9 +2,19 @@
   <div class="footer-separator">
   </div>
   <div class="footer-body">
-    <a class="back-to-top" href="#page_top">back to top</a>
-    <div class="headline">Today in Music History: <%= todays_formatted_date_no_year %></div>
-    <%= render partial: "common/footer_event", locals: {event: @random_event} %>
-    <%= button_to "more events", events_path, class: "more-events-button", method: "get"  %>
+    <div class="footer-top-row">
+      <div class="headline">Today in Music History: <%= todays_formatted_date_no_year %></div>
+      <div class="back-to-top">
+        <a href="#page_top">back to top</a>
+      </div>
+    </div>
+
+    <div class="footer-event-row">
+      <%= render partial: "common/footer_event", locals: {event: @random_event} %>
+    </div>
+
+    <div class="more-events-row">
+      <%= button_to "more events", events_path, class: "more-events-button", method: "get"  %>
+    </div>
   </div>
 </div>

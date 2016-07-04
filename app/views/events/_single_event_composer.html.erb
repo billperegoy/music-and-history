@@ -1,8 +1,8 @@
 <div class="single-event">
-  <div>
+  <div class="event-icon">
     <%= image_tag(event_icon_for_category(event.category.name)) %>
   </div>
-  <div>
+  <div class="event-body">
     <span><%= formatted_date(event.date) %></span>
     <span>: </span>
     <span><%= event.description.html_safe %></span>

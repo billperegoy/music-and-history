@@ -20,14 +20,8 @@ nav {
   }
 }
 
-.page-logo {
-}
 
-.page-tagline {
-  font-family: $quicksand-font-family;
-  font-size: 20px;
-  color: $tagline-color;;
-}
+/*
 
 
 form {
@@ -38,11 +32,50 @@ form {
 .search-icon {
   padding-top: 0px;
 }
+  */
+
 
 .search {
                 padding:8px 15px;
                 background:rgba(50, 50, 50, 0.2);
                 border-radius: 15px;
                 border: 1px #000 solid;
+}
+
+
+
+.header {
+  @include display(flex);
+  @include flex-direction(column);
+}
+
+.logo-row {
+  @include flex(1);
+  @include display(flex);
+  @include flex-direction(row);
+}
+
+.page-logo {
+  @include flex(5);
+  text-align: center;
+}
+
+.search-box {
+  @include flex(1);
+  @include justify-content(left);
+}
+
+.page-tagline {
+  @include flex(1);
+  font-family: $quicksand-font-family;
+  font-size: 20px;
+  color: $tagline-color;
+  // FIXME - why doesn't justify work?
+  @include justify-content(left);
+  text-align: center;
+}
+
+.nav-row {
+  @include flex(1);
 }
 
