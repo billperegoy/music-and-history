@@ -1,0 +1,11 @@
+<div class="page-body links-page">
+  <h1>Links</h1>
+  <div class="page-content links-content">
+    <% @link_categories.each do |category| %>
+      <p><%= category.name %></p>
+      <% category.hyperlinks.each do |link| %>
+        <p> <a target="_blank" href="<%= link.url %>"><%= link.name %></a></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -63,6 +63,7 @@ def process_file(file_name, category_lookup, composer_lookup)
   end
 end 
 
+LinkCategory.delete_all
 Category.delete_all
 Event.delete_all
 Composer.delete_all
@@ -91,5 +92,22 @@ files.each do |file|
   unless file.match(/anniversaries/)
     puts "Processing #{file}"
     process_file(file, category_lookup, composer_lookup)
+  end
+end
+
+links = open("db/musicandhistory/LINKS.txt")
+category = nil
+links.readlines.each do |line|
+  m = line.match(/^category\s+/)
+  if m
+    name = m.post_match
+    category = LinkCategory.create(name: name)
+  end
+
+  m = line.match(/^link\s+/)
+  if m
+    name = m.post_match.sub(/:.*$/, '')
+    url = "http://" + m.post_match.sub(/^.*:\s+/, '').sub(/ .*$/, '')
+    Hyperlink.create(name: name, url: url, link_category_id: category.id)
   end
 end

@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   resources :events, only: [:index]
   resources :composers, only: [:index, :show]
   root to: "pages#home"
+  resources :hyperlinks, only: [:index]
 
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
-  get 'pages/links'
   get 'pages/resources'
 end
