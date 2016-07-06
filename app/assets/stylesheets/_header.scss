@@ -1,81 +1,71 @@
 ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 nav {
   text-align: center;
-  background-color: $nav-background-color;
   background-color: $light-blue;
-  padding: 0px 0 0px 0;
+  padding: 0;
   li {
     display: inline;
-    a {
-      font-family: $quicksand-font-family;
+    a, a:link, a:visited {
+      font-family: $quick;
       font-size: 20px;
       font-weight: bold;
       text-decoration: none;
       color: white;
       padding-right: 50px;
+      &:hover {
+        color: $dark-blue;
+      }
     }
   }
 }
 
 
-/*
 
-
-form {
-                width:500px;
-                margin:50px auto;
-}
-
-.search-icon {
-  padding-top: 0px;
-}
-  */
 
 
 .search {
-                padding:8px 15px;
-                background:rgba(50, 50, 50, 0.2);
-                border-radius: 15px;
-                border: 1px #000 solid;
+  float: right;
+  margin: 10px 10px 0 0;
+  padding:8px 15px;
+  border-radius: 18px;
+  border: 3px $pink solid;
+  width: 200px;
+
+}
+
+input.search {
+  @include placeholder{
+    color: $pink !important;
+    font-size: 18px;
+    font-family: $treb;
+} 
+}
+
+input.search, input.search:focus {
+  font-size: 18px;
 }
 
 
-
-.header {
-  @include display(flex);
-  @include flex-direction(column);
-}
-
-.logo-row {
-  @include flex(1);
-  @include display(flex);
-  @include flex-direction(row);
+.search-icon {
 }
 
 .page-logo {
-  @include flex(5);
   text-align: center;
-}
-
-.search-box {
-  @include flex(1);
-  @include justify-content(left);
+  clear:both;
 }
 
 .page-tagline {
-  @include flex(1);
-  font-family: $quicksand-font-family;
+  font-family: $quick;
   font-size: 20px;
   color: $tagline-color;
-  // FIXME - why doesn't justify work?
-  @include justify-content(left);
   text-align: center;
+  padding-bottom: 25px;
 }
 
-.nav-row {
-  @include flex(1);
-}
+
 

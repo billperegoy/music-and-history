@@ -1,11 +1,10 @@
 .landing-page-body {
-  font-family: $roboto-slab-font-family;
+  font-family: $rob;
   height: 600px;
 
   .headline-box {
     font-size: 36px;
     color: white;
-    background-color: $header-color;
     width: 1000px;
     padding: 20px 20px 20px 20px;
     @include border-top-radius(20px);

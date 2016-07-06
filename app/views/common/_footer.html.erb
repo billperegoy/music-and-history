@@ -1,15 +1,18 @@
 <div class="footer">
-  <div class="footer-separator">
+  <div class="footer-separator">    <div class="back-to-top">
+        <a href="#page_top"><i class="fa fa-caret-up" aria-hidden="true">&nbsp;</i>back to top</a>
+      </div>
   </div>
+  
+
+
+  
   <div class="footer-body">
     <div class="footer-top-row">
-      <div class="headline">Today in Music History: <%= todays_formatted_date_no_year %></div>
-      <div class="back-to-top">
-        <a href="#page_top">back to top</a>
-      </div>
-    </div>
+      <div class="footer-title">Today in Music History: <%= todays_formatted_date_no_year %></div>
+        </div>
 
-    <div class="footer-event-row">
+    <div class="footer-event-body-text">
       <%= render partial: "common/footer_event", locals: {event: @random_event} %>
     </div>
 

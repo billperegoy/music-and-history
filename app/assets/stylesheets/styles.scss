@@ -1,10 +1,15 @@
+//universal
 @import "constants";
 @import "typography";
 @import "common";
 
+//partials
 @import "header";
-@import "composers-page";
-@import "events-page";
-@import "landing-page";
+@import "event-single";
 @import "footer";
+
+//page-specific
+@import "composers-page";
+@import "landing-page";
+
 

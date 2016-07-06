@@ -1,0 +1,27 @@
+.single-event {
+  background-color: white;
+  margin: 30px 30px 10px 30px;
+  min-height: 56px;
+  @include border-top-radius(15px);
+  @include border-bottom-radius(15px);
+
+  @include display(flex);
+  @include flex-direction(row);
+  align-items: center;
+}
+
+.event-icon {
+  margin: 3px 10px;
+  @include flex(1);
+}
+
+.event-body {
+  @include body-copy;
+  @include flex(17);
+  padding: 15px 30px 15px 0;
+  
+}
+
+.date-in-event {
+  font-weight: bold;
+}
