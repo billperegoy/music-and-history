@@ -1,33 +1,43 @@
-.footer {
-  font-family: $arial-font-family;
-
-  .footer-separator {
-    background-color: $footer-separator-color;
-    height: 24px;
+.footer-separator {
+  background-color: $orange;
+  @include display(flex);
+  @include flex(1);
+  justify-content: flex-end;
+    
+    .back-to-top a, .back-to-top a:link, .back-to-top a:visited, .back-to-top a:hover, .back-to-top a:active {
+      font-size: 18px;
+      color: white;
+      font-family: $quick;
+      font-weight: bold;
+      letter-spacing: -1px;
+      margin-right: 30px;
+      
+        .fa-caret-up {
+          padding-right: 3px;
+          font-size: 26px;
   }
+}
+ 
+ 
+ 
+ 
+ 
+}
+
+
+.footer {
+  font-family: $treb;
 
   .footer-body {
-    background-color: $footer-color;
-    font-family: $arial-font-family;
-    //padding-top: 32px;
-    //padding-left: 30px;
-    font-weight: bold;
+    background-color: $light-blue;
+    font-family: $treb;
     color: white;
     font-size: 16px;
+    padding: 30px;
 
     .more-events-button {
-      @include border-top-radius(12px);
-      @include border-bottom-radius(12px);
-      background-color: white;
-      border: 3px solid $button-outline-color;
-      font-family: $quicksand-font-family;
-      font-size: 30px;
-      color: $button-text-color;
-      font-weight: bold;
-      margin-top: 20px;
-      margin-left: 500px;
-      margin-bottom: 30px;
-    }
+      @include button;
+          }
   }
 }
 
@@ -43,21 +53,32 @@
   @include flex-direction(row);
 }
 
-.headline {
+.footer-random-event {
+  margin-top: 10px;
+
+}
+
+.footer-title {
   @include flex(4);
   font-size: 22px;
+  font-weight: bold;
 }
 
-.back-to-top {
-  @include flex(1);
+.footer-todays-date-no-year {
   font-size: 18px;
+  font-weigth: bold;
+  color: yellow;
 }
 
-.footer-event-row {
-  @include flex(1);
+.footer-event-body-text {
+  padding-right: 400px;
 }
 
-.more-events-row {
-  @include flex(1);
-}
+
+
+
+
+
+
+
 

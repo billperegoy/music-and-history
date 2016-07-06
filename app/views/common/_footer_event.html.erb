@@ -1,2 +1,4 @@
-<div class="headline"><%= event.date.year %> </div>
-<div class="footer-event-body"><%= event.description.html_safe %> </div>
+<div class="footer-random-event">
+<span class="footer-todays-date-no-year"><%= event.date.year %>:</span>
+<span class="footer-event-body-text"><%= event.description.html_safe %> </span>
+</div>

@@ -5,3 +5,51 @@ $quicksand-font-family: 'Quicksand', sans-serif;
 $roboto-slab-font-family: 'Roboto Slab', serif;
 $arial-font-family: 'Arial', sans-serif;
 $trebuchet-font-family: 'Terbuchet MS', sans-serif;
+
+$quick: 'Quicksand', sans-serif;
+$rob: 'Roboto Slab', serif;
+$arial: 'Arial', sans-serif;
+$treb: 'Terbuchet MS', sans-serif;
+
+@mixin body-copy {
+  font-family: $treb;
+  font-size: 18px;
+  color: $dark-grey;
+  line-height: 1.3em;
+}
+
+
+h1 {
+    font-family: $rob;
+    font-size: 36px;
+    font-weight: bold;
+    color: $pink;
+    margin-left: 30px;
+    padding-top: 30px;
+    margin-top: 0;
+}
+
+
+
+
+a {
+  color: $light-blue;
+  text-decoration: none;
+  &:hover, a:active {
+    color: $orange;
+  }
+  &:visited {
+    color:$dark-blue;
+  }
+}
+
+.footer a {
+  color: $dark-blue;
+   &:hover, a:active {
+    color: $orange;
+  }
+  &:visited {
+    color:$dark-blue;
+  }
+
+}
