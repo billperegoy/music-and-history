@@ -56,7 +56,8 @@ def process_file(file_name, category_lookup, composer_lookup)
     end
 
     category = categorize_description(description, category_lookup)
-    event = Event.create({date: date, category_id: category, description: description})
+    eventpic = (rand(2) == 0) ? nil : "eventpicture-thumb.png"
+    event = Event.create({date: date, category_id: category, description: description, image: eventpic})
     composers.each do |composer|
       EventComposerConnector.create(event_id: event.id, composer_id: composer) 
     end
