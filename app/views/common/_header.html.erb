@@ -1,14 +1,17 @@
 <header>
   <a name="page_top"</a>
-      <!-- <div class="search-icon"><%= link_to image_tag("search-icon.png"), root_path %></div> -->
+
+   <form class="seach-box">
+
+      <input class="search" type="text" placeholder="search" required action="/events">
+    </form>
+  
+  
   <div class="logo-row">
     <div class="page-logo">
       <%= link_to image_tag("logo.png"), root_path %>
     </div>
-    <form class="seach-box">
-      <%= image_tag("search-icon.png", class: "search-icon") %>
-      <input class="search" type="text" placeholder="Search..." required action="/events">
-    </form>
+   
   </div>
 
   <div class="page-tagline">
