@@ -1,6 +1,5 @@
 <div class="page-body events-page">
-  <h1> Today in History: <%= todays_formatted_date_no_year %></h1>
-
+  <h1><%= event_page_title %></h1>
   <div class="page-content events-content">
     <%= render partial: "event_list_today", locals: {events: @events} %>
   </div>

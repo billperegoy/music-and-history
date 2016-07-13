@@ -23,4 +23,8 @@ module EventsHelper
       "event-icon.png"
     end
   end
+
+  def event_page_title
+    params[:search] || "Today in History: #{todays_formatted_date_no_year}"
+  end
 end

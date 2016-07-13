@@ -1,17 +1,15 @@
 <header>
   <a name="page_top"</a>
 
-   <form class="seach-box">
+  <%= form_tag events_path, method: 'get', class: 'search-box' do %>
+    <%= text_field_tag :search, "", placeholder: "search", class: "search" %>
+  <% end %>
 
-      <input class="search" type="text" placeholder="search" required action="/events">
-    </form>
-  
-  
   <div class="logo-row">
     <div class="page-logo">
       <%= link_to image_tag("logo.png"), root_path %>
     </div>
-   
+
   </div>
 
   <div class="page-tagline">
