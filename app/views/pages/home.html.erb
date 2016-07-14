@@ -1,6 +1,10 @@
 <div class="landing-page-body" style="background-image: url(<%= random_background_image %>)">
   <div class="headline-box">Choose a date to see what happened in music and history</div>
-  <input class="date-select-from" type="month" value="2010-03-05"></input>
-  <input class="date-select-from" type="month" value="2010-03-05"></input>
-  <button class="date-select-button">go</button>
+
+
+  <%= form_tag events_path, method: 'get', class: 'date-picker' do %>
+    <%= date_field_tag 'start_date', nil, class: 'date-select-from' %>
+    <%= date_field_tag 'end_date', nil, class: 'date-select-from' %>
+    <%= submit_tag 'go', class: "date-select-button" %>
+  <% end %>
 </div>
