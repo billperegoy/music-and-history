@@ -25,6 +25,34 @@ module EventsHelper
   end
 
   def event_page_title
-    params[:search] || "Today in History: #{todays_formatted_date_no_year}"
+    if search? 
+      params[:search]
+    elsif single_day?
+      "Date: #{start_date}"
+    elsif date_range? 
+      "Dates: #{start_date} to #{end_date}"
+    else
+      "Today in History: #{todays_formatted_date_no_year}"
+    end
+  end
+
+  private
+  def search?
+    params[:search]
+  end
+
+  def single_day?
+    start_date && !end_date
+  end
+  def date_range?
+    start_date && end_date
+  end
+
+  def start_date
+    params[:start_date]
+  end
+
+  def end_date
+    params[:end_date]
   end
 end

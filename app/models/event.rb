@@ -13,5 +13,7 @@ class Event < ActiveRecord::Base
     where('extract(day from date) = ?', day)
   end
 
+  scope :date_range, lambda {|start_date, end_date| where("date >= ? AND date <= ?", start_date, end_date )}
+
   pg_search_scope :search_description, :against => [:description]
 end
