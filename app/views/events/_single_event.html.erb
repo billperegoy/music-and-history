@@ -3,7 +3,7 @@
     <%= image_tag(event_icon_for_category(event.category.name)) %>
   </div>
   <div class="event-body">
-    <span class="date-in-event"><%= single_event_date(event.date, type) %>: </span>
+    <span class="date-in-event"><%= single_event_date(event.date, type) %></span>
     <span></span>
     <span><%= event.description.html_safe %></span>
     <span><%= image_tag(event.image) %></span>
