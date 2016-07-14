@@ -1,6 +1,6 @@
 <div class="page-body composer-page">
   <h1><%= "#{@composer.first_name} #{@composer.last_name}" %></h1>
   <div class="page-content composer-content">
-    <%= render partial: "events/event_list", locals: {events: @composer.events, type: :composer} %>
+    <%= render partial: "events/event_list", locals: {events: @composer.events, type: :full_date} %>
   </div>
 </div>

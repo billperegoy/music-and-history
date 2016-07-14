@@ -36,6 +36,19 @@ module EventsHelper
     end
   end
 
+  def single_event_date(date, type)
+    case type
+    when :year_only 
+      date.year
+    when :full_date
+      formatted_date(date)
+    when :no_date
+      ""
+    else
+      ""
+    end
+  end
+
   private
   def search?
     params[:search]
