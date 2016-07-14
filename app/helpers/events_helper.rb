@@ -30,7 +30,7 @@ module EventsHelper
     elsif single_day?
       "#{formatted_date(Date.parse(start_date))}"
     elsif date_range? 
-      "#{formatted_date(Date.parse(start_date))} to #{formatted_date(Date.parse(end_date))}"
+      "#{formatted_date(Date.parse(start_date))}&ndash;#{formatted_date(Date.parse(end_date))}"
     else
       "Today in History: #{todays_formatted_date_no_year}"
     end

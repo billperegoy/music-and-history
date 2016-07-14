@@ -1,5 +1,5 @@
 <div class="page-body events-page">
-  <h1><%= event_page_title %></h1>
+  <h1><%= event_page_title.html_safe %></h1>
   <div class="page-content events-content">
     <%= render partial: "event_list", locals: {events: @events, type: date_type_from_params} %>
   </div>
