@@ -3,8 +3,8 @@
 
 
   <%= form_tag events_path, method: 'get', class: 'date-picker' do %>
-    <%= date_field_tag 'start_date', nil, class: 'date-select-from' %>
-    <%= date_field_tag 'end_date', nil, class: 'date-select-from' %>
+    <%= date_field_tag 'start_date', nil, class: 'date-select' %>
+    <%= date_field_tag 'end_date', nil, class: 'date-select' %>
     <%= submit_tag 'go', class: "date-select-button" %>
   <% end %>
 </div>
