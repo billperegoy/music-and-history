@@ -3,7 +3,11 @@
     <%= image_tag(event_icon_for_category(event.category.name)) %>
   </div>
   <div class="event-body">
-    <span class="date-in-event"><%= event.date.year %>: </span>
+    <% if type == :today %>
+      <span class="date-in-event"><%= event.date.year %>: </span>
+    <% elsif type == :composer %>
+      <span class="date-in-event"><%= formatted_date(event.date) %>:</span>
+    <% end %>
     <span></span>
     <span><%= event.description.html_safe %></span>
     <span><%= image_tag(event.image) %></span>

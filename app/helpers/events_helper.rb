@@ -28,9 +28,9 @@ module EventsHelper
     if search? 
       params[:search]
     elsif single_day?
-      "Date: #{start_date}"
+      "#{formatted_date(Date.parse(start_date))}"
     elsif date_range? 
-      "Dates: #{start_date} to #{end_date}"
+      "#{formatted_date(Date.parse(start_date))} to #{formatted_date(Date.parse(end_date))}"
     else
       "Today in History: #{todays_formatted_date_no_year}"
     end
