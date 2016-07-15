@@ -8,6 +8,6 @@ module ApplicationHelper
     ]
 
     image_num = rand(images.length)
-    "assets/#{images[image_num]}"
+    asset_path(images[image_num])
   end
 end

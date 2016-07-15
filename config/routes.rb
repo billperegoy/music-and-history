@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "date_selects#new"
+
   namespace :admin do
     resources :events
     root to: "events#index"
@@ -6,7 +8,6 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index]
   resources :composers, only: [:index, :show]
-  root to: "pages#home"
   resources :hyperlinks, only: [:index]
 
   get 'pages/home'
@@ -16,4 +17,6 @@ Rails.application.routes.draw do
 
   get 'contact', to: 'messages#new', as: 'contact'
   post 'contact', to: 'messages#create'
+
+  resources :date_selects, only: [:new, :create]
 end

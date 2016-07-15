@@ -39,9 +39,9 @@ module EventsHelper
   def date_type_from_params
     if params[:search]
       :full_date
-    elsif params[:start_date] && params[:end_date]
+    elsif params[:start_year] && params[:end_year]
       :full_date
-    elsif params[:start_date] && !params[:end_date]
+    elsif params[:start_year] && !params[:end_year]
       :no_date
     else
       :year_only
@@ -74,10 +74,10 @@ module EventsHelper
   end
 
   def start_date
-    params[:start_date]
+    params[:start_year] + '-' + params[:start_month] + '-' + params[:start_day]
   end
 
   def end_date
-    params[:end_date]
+    params[:end_year] + '-' + params[:end_month] + '-' + params[:end_day]
   end
 end

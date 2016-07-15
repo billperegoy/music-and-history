@@ -1,0 +1,38 @@
+<div class="landing-page-body" style="background-image: url(<%= random_background_image %>)">
+  <div class="headline-box">Choose a date to see what happened in music and history</div>
+
+
+  <%= form_for @date_select, class: 'date-picker' do |f| %>
+    <fieldset class="date-select">
+      <label>Start</label>
+      <div class="field">
+        <%= f.select(:start_month, month_options) %>
+      </div>
+      <div class="field">
+        <%= f.select(:start_day, day_options) %>
+      </div>
+      <div class="field">
+        <%= f.text_field :start_year, placeholder: "Year" %>
+      </div>
+    </fieldset>
+  
+    <fieldset class="date-select">
+      <label>End</label>
+      <div class="field">
+        <%= f.select(:end_month, month_options) %>
+      </div>
+      <div class="field">
+        <%= f.select(:end_day, day_options) %>
+      </div>
+      <div class="field">
+        <%= f.text_field :end_year, placeholder: "Year" %>
+      </div>
+    </fieldset>
+  
+    <fieldset class="date-select">
+      <div class="field">
+        <%= f.submit "go" %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
