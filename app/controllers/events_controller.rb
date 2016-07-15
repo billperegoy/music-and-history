@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   end
 
   def start_date
-    date_string = events_params[:start_year] + "-" + events_params[:start_month] + "-" + events_params[:start_day]
+    date_string = "#{events_params[:start_year]}-#{events_params[:start_month]}-#{events_params[:start_day]}"
     Date.parse(date_string)
   end
 

@@ -1,8 +1,4 @@
 class PagesController < ApplicationController
-  def home
-    @random_event = random_event_on_this_date_in_history
-  end
-
   def about
     @random_event = random_event_on_this_date_in_history
   end
