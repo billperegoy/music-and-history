@@ -1,0 +1,155 @@
+//////////////COMMON/////////////
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.page-body {
+  margin: 0;
+  padding: 0;
+}
+
+.page-content {
+  padding-bottom: 50px;
+}
+
+
+.page-box {
+    background-color: white;
+    position: relative;
+    top: 30px;
+    margin: 0 30px 10px 30px;
+    min-height: 100px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}    
+
+.body-text {
+    margin: 0 50px;
+}
+
+
+
+
+//////////////HOME/////////////
+
+.landing-page-body {
+  font-family: $rob;
+  height: 650px;
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-color: $light-grey;
+
+  .headline-box {
+    font-size: 36px;
+    color: white;
+    width: 1000px;
+    padding: 20px 20px 20px 20px;
+    @include border-top-radius(20px);
+    @include border-bottom-radius(20px);
+    background-color: $pink;
+    text-align: center;
+    margin: 0px auto;
+    position: relative;
+    top: 100px;
+    }
+
+
+  .date-select, .date-select {
+    position: relative;
+    top: 200px;
+    left: 500px;
+  }
+
+  .date-select-button {
+    position: relative;
+    top: 250px;
+    left: 400px;
+    height: 50px;
+    width: 75px;
+    @include border-top-radius(12px);
+    @include border-bottom-radius(12px);
+    background-color: white;
+    border: 5px solid $button-outline-color;
+    font-family: $quicksand-font-family;
+    font-size: 30px;
+    color: $button-text-color;
+    font-weight: bold;
+  }
+}
+
+
+
+
+//////////////ABOUT/////////////
+
+.about-page {
+  background-color: $light-orange;
+
+    
+}
+
+.about-page .page-box {
+   @include display(flex);
+  @include flex-direction(row);
+}
+
+.about-sidebar {
+  border: 1pt blue solid;
+  width: 300px;
+  @include flex(3);
+
+}
+
+.picture {
+  width: 300px;
+  height: 400px;
+  background-color: $light-grey;
+}
+
+
+.body-text p {
+    @include body-copy;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////COMPOSERS/////////////
+
+
+.composer-letter-group {
+  border-top: 1px solid;
+}
+
+.composer-list {
+  @include display(flex);
+  @include flex-direction(row);
+}
+
+.composer-column {
+  @include flex(1);
+  margin: 0 30px 0 30px;
+}
+
+
+
+//////////////EVENTS/////////////
+.events-page {
+  background-color: $light-light-blue;
+}
+
+
