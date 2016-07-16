@@ -74,10 +74,10 @@ module EventsHelper
   end
 
   def start_date
-    "{params[:start_year]}-#{params[:start_month]}-#{params[:start_day]}"
+    "#{params[:start_year]}-#{params[:start_month]}-#{params[:start_day]}"
   end
 
   def end_date
-    "{params[:end_year]}-#{params[:end_month]}-#{params[:end_day]}"
+    "#{params[:end_year]}-#{params[:end_month]}-#{params[:end_day]}"
   end
 end

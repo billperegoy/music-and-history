@@ -27,10 +27,11 @@ class EventsController < ApplicationController
   end
 
   def end_date
-    #if events_params[:end_date]
-    #  Date.parse(events_params[:end_date])
-    #else
+    if events_params[:end_year]
+      date_string = "#{events_params[:end_year]}-#{events_params[:end_month]}-#{events_params[:end_day]}"
+      Date.parse(date_string)
+    else
       start_date
-    #end
+    end
   end
 end
