@@ -2,15 +2,24 @@
   <div class="headline-box">Choose a date to see what happened in music and history</div>
 
 
+<!--
+<script>
+  $( "#toggle-button" ).click(function(event) {
+    event.preventDefault();
+    $('#date-select-end').toggle();
+  });
+</script>
+-->
   <div class="date-picker-section">
     <%= form_for @date_select, class: 'date-picker' do |f| %>
-      <div class="date-select">
+      <div class="date-select date-select-start">
         <%= f.select(:start_month, month_options) %>
         <%= f.select(:start_day, day_options) %>
         <%= f.text_field :start_year, placeholder: "Year" %>
       </div>
+      <button class="date-select" id="toggle-button">select date range</button>
 
-      <div class="date-select">
+      <div class="date-select" id="date-select-end">
         <%= f.select(:end_month, month_options) %>
         <%= f.select(:end_day, day_options) %>
         <%= f.text_field :end_year, placeholder: "Year" %>
