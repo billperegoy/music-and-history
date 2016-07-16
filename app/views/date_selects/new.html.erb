@@ -5,7 +5,7 @@
   <div class="date-picker-section">
     <%= form_for @date_select, class: 'date-picker' do |f| %>
       <div class="date-select date-select-start">
-        <%= f.select(:start_month, month_options) %>
+        <%= f.select(:start_month, month_options, {}, {class: "month-picker-1"}) %>
         <%= f.select(:start_day, day_options) %>
         <%= f.text_field :start_year, placeholder: "Year" %>
       </div>
