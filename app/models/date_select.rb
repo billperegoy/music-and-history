@@ -3,8 +3,8 @@ class DateSelect
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_accessor :start_month, :start_day, :start_year
   attr_accessor :date_range
+  attr_accessor :start_month, :start_day, :start_year
   attr_accessor :end_month, :end_day, :end_year
 
   validates :start_month,
@@ -19,9 +19,13 @@ class DateSelect
   validates :end_day,
     presence: true
 
-  #validates :start_year,
-  #  presence: true
+  validates :start_year,
+    presence: true
 
-  #validates :end_year,
-  #  presence: true
+  validates :end_year, 
+    presence: true, if: "date_range?"
+
+  def date_range?
+    date_range == "1"
+  end
 end

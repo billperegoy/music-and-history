@@ -22,5 +22,12 @@
         <%= f.submit "go", class: "date-select-button" %>
       </div>
     <% end %>
+
+    <% if @date_select.errors.any? %>
+      <% @date_select.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    <% end %>
+
   </div>
 </div>
