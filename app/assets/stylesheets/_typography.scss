@@ -19,6 +19,7 @@ $treb: 'Terbuchet MS', sans-serif;
 }
 
 
+
 h1 {
     font-family: $rob;
     font-size: 36px;
@@ -28,8 +29,6 @@ h1 {
     padding-top: 30px;
     margin-top: 0;
 }
-
-
 
 
 a {
@@ -43,13 +42,26 @@ a {
   }
 }
 
-.footer a {
-  color: $dark-blue;
-   &:hover, a:active {
-    color: $orange;
-  }
-  &:visited {
-    color:$dark-blue;
-  }
+
+ol, ul {
+  @include body-copy;
+  margin-right: 100px;
+}
+
+.picture-caption {
+  @include body-copy;
+  font-size: 14px;
+  padding-bottom: 20px;
 
 }
+
+.event-picture-caption {
+  
+}
+
+
+
+
+
+
+
