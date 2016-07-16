@@ -1,7 +1,7 @@
-class PagesController < ApplicationController
-  def about
+class ResourcesController < ApplicationController
+  def index
     @random_event = random_event_on_this_date_in_history
-    @page = Page.find_by(name: 'about')
+    @resources = Resource.all
   end
 
   private

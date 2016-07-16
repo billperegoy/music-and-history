@@ -1,6 +1,17 @@
 require 'csv'
 require 'textractor'
 
+def create_resources_page
+  resources = open("db/musicandhistory/resources_list.txt")
+  resources.readlines.each do |line|
+    begin
+    Resource.create(text: line)
+    rescue
+      # FIXME puts "Bad text: #{line}"
+    end
+  end
+end
+
 def create_about_page
   name = "about"
   content = <<EOM
@@ -116,6 +127,7 @@ Category.delete_all
 Event.delete_all
 Composer.delete_all
 Page.delete_all
+Resource.delete_all
 
 category_birth = Category.create(name: 'birth')
 category_death = Category.create(name: 'death')
@@ -162,3 +174,4 @@ links.readlines.each do |line|
 end
 
 create_about_page
+create_resources_page
