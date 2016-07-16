@@ -45,6 +45,14 @@ $light-green: lighten($bright-green, 80%);
   }
 }
 
+@mixin border-radius15 {
+  @include border-top-radius(15px);
+  @include border-right-radius(15px);
+  @include border-bottom-radius(15px);
+  @include border-left-radius(15px);
+}
+
+
 
 
 // Functional color names
