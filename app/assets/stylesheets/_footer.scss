@@ -76,7 +76,16 @@
 
 
 
+.footer a {
+  color: $dark-blue;
+   &:hover, a:active {
+    color: $orange;
+  }
+  &:visited {
+    color:$dark-blue;
+  }
 
+}
 
 
 

@@ -21,8 +21,7 @@ body {
     background-color: white;
     position: relative;
     top: 30px;
-    margin: 0 30px 10px 30px;
-    min-height: 100px;
+    margin: 0 30px 0px 30px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -98,26 +97,32 @@ body {
 
 .about-page {
   background-color: $light-orange;
-
-    
+  padding-bottom: 100px;
 }
 
+
+
 .about-page .page-box {
-   @include display(flex);
+  @include display(flex);
   @include flex-direction(row);
 }
 
+
+.about-page h1 {
+  margin-left: 0;
+}
+
 .about-sidebar {
-  border: 1pt blue solid;
   width: 300px;
+  margin-top: 30px;
+  margin-right: 30px;
   @include flex(3);
 
 }
 
 .picture {
-  width: 300px;
-  height: 400px;
-  background-color: $light-grey;
+  margin-right: 10px;
+  width: 250px;
 }
 
 
@@ -125,6 +130,9 @@ body {
     @include body-copy;
 }
 
+.body-text p:last-child {
+  margin-bottom: 75px;
+}
 
 
 
@@ -138,14 +146,20 @@ body {
 
 //////////////COMPOSERS/////////////
 
+.composers-page {
+  background-color: $light-orange;
+  padding-bottom: 100px;
+    }
 
-.composer-letter-group {
-  border-top: 1px solid;
-}
+.page-box {
+    margin-bottom: 75px;
+  }
+
 
 .composer-list {
   @include display(flex);
   @include flex-direction(row);
+  
 }
 
 .composer-column {
@@ -153,8 +167,36 @@ body {
   margin: 0 30px 0 30px;
 }
 
+.letters {
+  font-size: 32px;
+  font-weight: bold;
+  font-family: $rob;
+  letter-spacing: 15px; 
+}  
+
+.letters:first-child {
+  margin-left: 30px;
+}
+
+.letter-header {
+  @include body-copy;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 20px;
+  border-top: 1pt $light-grey solid;
+  padding-top: 5px;
+  margin-top: 30px !important;
+}
+
+.composer-letter-group {
+    @include body-copy;
+    p {
+      margin: 5px 0px;
+        }
+}
 
 
+  
 //////////////EVENTS/////////////
 .events-page {
   background-color: $light-light-blue;

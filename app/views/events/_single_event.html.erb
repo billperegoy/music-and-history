@@ -4,9 +4,8 @@
   </div>
   <div class="event-body">
     <span class="date-in-event"><%= single_event_date(event.date, type) %></span>
-    <span></span>
     <span><%= event.description.html_safe %></span>
-    <span><%= image_tag(event.image) %></span>
-    <span><%= event.caption %></span>
+    <span class="event-picture"><%= image_tag(event.image) %></span>
+    <span class="event-picture-caption"><%= event.caption %></span>
   </div>
 </div>
