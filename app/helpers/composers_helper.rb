@@ -11,6 +11,13 @@ module ComposersHelper
     end
   end
 
+  def composer_columns(groups)
+    [
+      composer_column(groups, ('A'..'K')),
+      composer_column(groups, ('L'..'Z'))
+    ]
+  end
+
   def composer_column(groups, range)
     column = {}
     range.each do |letter|

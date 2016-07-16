@@ -9,10 +9,9 @@
       <% end %>
 
       <div class="composer-list">
-        <% column1 = composer_column(groups, ('A'..'K')) %>
-        <% column2 = composer_column(groups, ('L'..'Z')) %>
-        <%= render partial: "composer_column", locals: {group: column1} %>
-        <%= render partial: "composer_column", locals: {group: column2} %>
+        <% columns = composer_columns(groups) %>
+        <%= render partial: "composer_column", locals: {group: columns[0]} %>
+        <%= render partial: "composer_column", locals: {group: columns[1]} %>
       </div>
     </div>
     </div>
