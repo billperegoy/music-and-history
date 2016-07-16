@@ -10,4 +10,12 @@ module ComposersHelper
       full_name(composer)
     end
   end
+
+  def composer_column(groups, range)
+    column = {}
+    range.each do |letter|
+      column[letter] = groups[letter]
+    end
+    column
+  end
 end
