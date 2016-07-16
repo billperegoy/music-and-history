@@ -30,7 +30,7 @@ module EventsHelper
     elsif single_day?
       "#{formatted_date(Date.parse(start_date))}"
     elsif date_range? 
-      "#{formatted_date(Date.parse(start_date))}&ndash;#{formatted_date(Date.parse(end_date))}"
+      "#{formatted_date(Date.parse(start_date))} &ndash; #{formatted_date(Date.parse(end_date))}"
     else
       "Today in History: #{todays_formatted_date_no_year}"
     end
@@ -39,9 +39,9 @@ module EventsHelper
   def date_type_from_params
     if params[:search]
       :full_date
-    elsif params[:start_year] && params[:end_year]
+    elsif date_range?
       :full_date
-    elsif params[:start_year] && !params[:end_year]
+    elsif single_day? 
       :no_date
     else
       :year_only
@@ -67,10 +67,10 @@ module EventsHelper
   end
 
   def single_day?
-    params[:start_year] && !params[:end_year]
+    params[:start_year] && (params[:date_range] == "0")
   end
   def date_range?
-    params[:start_year] && params[:end_year]
+    params[:start_year] && (params[:date_range] == "1")
   end
 
   def start_date
