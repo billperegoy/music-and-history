@@ -37,6 +37,7 @@ body {
 
 //////////////HOME/////////////
 
+
 #date-select-end {
   display: none;
 }
@@ -67,28 +68,104 @@ body {
     }
 
 
-  .date-select, .date-select {
+  .date-select {
+    text-align: center;
     position: relative;
-    top: 200px;
-    left: 500px;
+    top: 150px;
+
   }
+
+
+.date-select-end {
+    
+}
 
   .date-select-button {
     position: relative;
     top: 250px;
     left: 400px;
-    height: 50px;
-    width: 75px;
-    @include border-top-radius(12px);
-    @include border-bottom-radius(12px);
-    background-color: white;
-    border: 5px solid $button-outline-color;
-    font-family: $quicksand-font-family;
-    font-size: 30px;
-    color: $button-text-color;
-    font-weight: bold;
-  }
+    @include button;
+      }
 }
+
+
+.month-picker-1, .day-picker-1, .year-picker-1, .month-picker-2, .day-picker-2, .year-picker-2 {
+  background-color: white;
+  font-size: 30px;
+  padding: 5px;
+  color: $light-blue;
+}
+
+.year-picker-1, .year-picker-2 {
+  border-radius: 5px;
+  color: $light-grey;
+  border: none;
+  font-size: 30px;
+  font-family: courier;
+  font-weight: normal;
+  width: 100px;
+  box-shadow: none;
+} 
+
+.toggle-label {
+  position: relative;
+  top: 24px;
+  color: white;
+  text-shadow: 1px 1px black;
+  letter-spacing: .1px;
+}
+
+
+.toggle-button { 
+  background-color: white; 
+  margin: 5px 0; 
+  border-radius: 20px; 
+  border: 2px solid #D0D0D0; 
+  height: 24px; 
+  cursor: pointer; 
+  width: 50px; 
+  position: relative;
+  top: -12px;
+  left: 5px; 
+  display: inline-block; 
+  user-select: none; 
+  -webkit-user-select: none; 
+  -ms-user-select: none; 
+  -moz-user-select: none; 
+  }
+  
+  
+.toggle-button button { 
+  cursor: pointer; 
+  outline: 0; 
+  display:block; 
+  position: absolute; 
+  left: 0; 
+  top: 0; 
+  border-radius: 100%; 
+  width: 30px; 
+  height: 30px; 
+  background-color: white; 
+  float: left; margin: -3px 0 0 -3px; 
+  border: 2px solid #D0D0D0; 
+  transition: left 0.3s; 
+  }
+  
+.toggle-button-selected { 
+  background-color: $light-blue; 
+  border: 2px solid #D0D0D0; 
+}
+
+.toggle-button-selected button { 
+  left: 26px; 
+  top: 0; 
+  margin: 0; 
+  border: none; 
+  width: 24px; 
+  height: 24px; 
+  box-shadow: 0 0 4px rgba(0,0,0,0.1); 
+  }
+
 
 
 

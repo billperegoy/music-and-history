@@ -8,4 +8,12 @@ $(document).ready(function(){
     var checked = $('#date-range-checkbox')[0].checked;
     $('#date-range-checkbox')[0].checked = (checked) ? false : true;
   });
+
+  $(document).on('click', '.toggle-button', function() {
+    event.preventDefault();
+    $(this).toggleClass('toggle-button-selected'); 
+    $('#date-select-end').toggle();
+    var checked = $('#date-range-checkbox')[0].checked;
+    $('#date-range-checkbox')[0].checked = (checked) ? false : true;
+  });
 });

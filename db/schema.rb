@@ -36,12 +36,6 @@ ActiveRecord::Schema.define(version: 20160716194013) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "event_types", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "events", force: :cascade do |t|
     t.date     "date"
     t.string   "description"
