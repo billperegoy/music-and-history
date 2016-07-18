@@ -53,7 +53,7 @@ Let us know if you find this site useful. We would like to hear all constructive
 EOM
 
   page = Page.create(name:name, content:content)
-  PagePhoto.create(image: "prokofiev1918.jpg", caption: "Sergei Prokofiev</a> in New York, 1918", page_id: page.id)
+  PagePhoto.create(image: "prokofiev1918.jpg", caption: "Sergei Prokofiev in New York, 1918", page_id: page.id)
   PagePhoto.create(image: "nicholas1917.jpg", caption: "Czar Nicholas II of Russia after his abdication in 1917", page_id: page.id)
 end
 
