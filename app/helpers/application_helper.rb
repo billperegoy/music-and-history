@@ -6,7 +6,6 @@ module ApplicationHelper
       "03-background.png",
       "04-background.png",
       "05-background.png",
-      "06-background.png",
       "07-background.png",
       "08-background.png",
       "09-background.png",

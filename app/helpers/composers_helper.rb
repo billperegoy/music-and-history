@@ -13,8 +13,8 @@ module ComposersHelper
 
   def composer_columns(groups)
     [
-      composer_column(groups, ('A'..'K')),
-      composer_column(groups, ('L'..'Z'))
+      composer_column(groups, ('A'..'L')),
+      composer_column(groups, ('M'..'Z'))
     ]
   end
 

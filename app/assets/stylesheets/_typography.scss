@@ -48,16 +48,14 @@ ol, ul {
   margin-right: 100px;
 }
 
-.picture-caption {
+.picture-caption, .event-picture-caption {
   @include body-copy;
   font-size: 14px;
   padding-bottom: 20px;
 
 }
 
-.event-picture-caption {
-  
-}
+
 
 
 

@@ -1,27 +1,33 @@
-<% if flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
-<% end %>
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+
+
 <%= form_for @message, url: contact_path do |message_form| %>
-  <fieldset>
-    <div class="field">
-      <%= message_form.text_field :name, placeholder: "Name" %>
-    </div>
+ 
+ 
+ <div class="contact-page">
+  <div class="page-box">
+  <h1>Contact</h1>
+  
+    <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
 
-    <div class="field">
-      <%= message_form.email_field :email, placeholder: "Email"%>
-    </div>
+    <section class="body-text">
+ 
+  <fieldset class="contact-form">
+      <%= message_form.text_field :name, placeholder: "Name", class: "contact-name-field contact-form-field" %>
 
-    <div class="field">
-      <%= message_form.text_area :content, placeholder: "Message"%>
-    </div>
+      <%= message_form.email_field :email, placeholder: "Email", class: "contact-email-field contact-form-field" %>
+
+      <%= message_form.text_area :content, placeholder: "Message", class: "contact-message-field contact-form-field" %>
+      <%= message_form.submit "send", class: "contact-submit-button" %>
+
   </fieldset>
 
-  <fieldset>
-    <div class="field">
-      <%= message_form.submit "Send" %>
-    </div>
-  </fieldset>
-<% end %>
+ <% end %>
+
+    </section>
+  </div>
+ </div>

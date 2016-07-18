@@ -12,6 +12,7 @@ body {
   padding: 0;
 }
 
+
 .page-content {
   padding-bottom: 50px;
 }
@@ -26,13 +27,17 @@ body {
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    margin-bottom: 75px;
+
 }    
 
 .body-text {
     margin: 0 50px;
 }
 
-
+fieldset {
+  border: none;
+}
 
 
 //////////////HOME/////////////
@@ -72,18 +77,22 @@ body {
     text-align: center;
     position: relative;
     top: 150px;
-
   }
 
 
-.date-select-end {
+#date-select-end {
+  margin-top: 10px;
     
 }
 
+.entire-date-picker {
+  }
+
+
   .date-select-button {
     position: relative;
-    top: 250px;
-    left: 400px;
+    top: 175px;
+    left: 900px;
     @include button;
       }
 }
@@ -125,11 +134,11 @@ body {
   cursor: pointer; 
   width: 50px; 
   position: relative;
-  top: -12px;
-  left: 5px; 
+  top: 48px;
+  left: 900px;
   display: inline-block; 
   user-select: none; 
-  -webkit-user-select: none; 
+  -webkit-user-select: none;  
   -ms-user-select: none; 
   -moz-user-select: none; 
   }
@@ -146,7 +155,8 @@ body {
   width: 30px; 
   height: 30px; 
   background-color: white; 
-  float: left; margin: -3px 0 0 -3px; 
+  float: left; 
+  margin: -3px 0 0 -3px; 
   border: 2px solid #D0D0D0; 
   transition: left 0.3s; 
   }
@@ -154,6 +164,9 @@ body {
 .toggle-button-selected { 
   background-color: $light-blue; 
   border: 2px solid #D0D0D0; 
+  position: relative;
+  top: 48px;
+  left: 900px;
 }
 
 .toggle-button-selected button { 
@@ -167,7 +180,15 @@ body {
   }
 
 
+.date-error-message {
+  text-align: center;
+  position: relative;
+  top: 125px;
+  color: white;
+  text-shadow: 1px 1px black;
+  letter-spacing: .1px;
 
+}
 
 
 //////////////ABOUT/////////////
@@ -228,9 +249,7 @@ body {
   padding-bottom: 100px;
     }
 
-.page-box {
-    margin-bottom: 75px;
-  }
+
 
 
 .composer-list {
@@ -279,4 +298,76 @@ body {
   background-color: $light-light-blue;
 }
 
+
+//////////////LINKS/////////////
+.links-page {
+  background-color: $light-grey;
+  padding-bottom: 100px;
+}
+
+.links-content {
+   @include display(flex);
+  @include flex-direction(row);
+ 
+}
+
+.links-page .column-1 {
+  @include flex(1);
+  margin: 0 30px 0 30px;
+}
+
+.links-page .column-2 {
+  @include flex(1);
+  margin: 0 30px 0 30px;
+}
+
+
+//////////////SOURCES/////////////
+.resources-page {
+  background-color: tint($light-grey, 40%);
+  padding-bottom: 100px;
+}
+
+
+
+
+//////////////CONTACT/////////////
+
+.contact-page {
+  background-color: tint($dark-blue, 40%);
+  padding-bottom: 100px;
+}
+
+
+.contact-submit-button {
+  @include button;
+  float: right;
+}
+
+.contact-form {
+  width: 500px; 
+  margin: 0 auto;
+}
+
+.contact-form-field {
+  display: block;
+  font-size: 26px;
+  font-family: courier;
+  margin-bottom: 20px;
+  width: 500px;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: 2px $pink solid;
+}
+
+.contact-message-field {
+  height: 200px;
+}
+
+.notice, .alert {
+  @include body-copy;
+  color: $pink;
+  width: 500px; 
+  margin: 0 auto;
+}
 

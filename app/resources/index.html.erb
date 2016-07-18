@@ -1,7 +1,8 @@
-<div class="resources-page">
+<div class="page-body resources-page">
   <div class="page-box">
-    <section class="body-text">
-      <h1>Resources</h1>
+      <h1>Sources</h1>
+         <section class="page-content resources-content body-text">
+
       <% @resources.each do |resource| %>
         <p class="resource-item"><%= resource.text.html_safe %></p>
       <% end %>

@@ -4,7 +4,6 @@
   min-height: 56px;
   @include border-top-radius(15px);
   @include border-bottom-radius(15px);
-
   @include display(flex);
   @include flex-direction(row);
   align-items: center;
@@ -18,12 +17,23 @@
 .event-body {
   @include body-copy;
   @include flex(17);
-  padding: 15px 30px 15px 0;
-  
+  padding: 15px 30px 15px 0;  
+  @include display(flex);
+}
+
+.event-description {
+  @include flex(10);
+}
+
+.event-picture-and-caption {
+  @include flex(1);
+  margin-left: 20px;
+
 }
 
 .date-in-event {
   font-weight: bold;
+
 }
 
 .event-picture-caption {

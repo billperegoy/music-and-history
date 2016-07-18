@@ -2,7 +2,7 @@
   <a name="page_top"</a>
 
   <%= form_tag events_path, method: 'get', class: 'search-box' do %>
-    <%= text_field_tag :search, "", placeholder: "search", class: "search" %>
+    <%= text_field_tag :search, "", placeholder: "   search", class: "search" %>
   <% end %>
 
   <div class="logo-row">
@@ -22,8 +22,8 @@
       <li><%= link_to "home", root_path %></li>
       <li><%= link_to "about", pages_about_path %></li>
       <li><%= link_to "composers", composers_path %></li>
-      <li><%= link_to "contact", contact_path %></li>
       <li><%= link_to "links", hyperlinks_path %></li>
-      <li><%= link_to "resources", resources_path %></li>
+      <li><%= link_to "sources", resources_path %></li>
+      <li><%= link_to "contact", contact_path %></li>
   </nav>
 </header>
