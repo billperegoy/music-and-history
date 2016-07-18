@@ -334,7 +334,7 @@ fieldset {
 //////////////CONTACT/////////////
 
 .contact-page {
-  background-color: tint($dark-blue, 40%);
+  background-color: tint($dark-blue, 30%);
   padding-bottom: 100px;
 }
 
@@ -357,7 +357,8 @@ fieldset {
   width: 500px;
   padding-left: 5px;
   border-radius: 5px;
-  border: 2px $pink solid;
+  border: 2px $light-grey solid;
+  background-color: tint($light-blue, 95%);
 }
 
 .contact-message-field {
