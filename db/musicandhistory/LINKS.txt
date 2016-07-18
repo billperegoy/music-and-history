@@ -140,7 +140,8 @@ link Charles Wuorinen: www.edition-peters.com/composer/Wuorinen-Charles
 link Ellen Taaffe Zwilich: http://www.presser.com/composer/zwilich-ellen-taaffe/
 link Ellen Taaffe Zwilich: http://www.musicsalesclassical.com/composer/short-bio/Ellen-Taaffe-Zwilich
 
-category Publisher Pages (Lots of interesting information about composers and the contemporary music scene can be found at publishers’ pages)
+description Lots of interesting information about composers and the contemporary music scene can be found at publishers’ pages
+category Publisher Pages 
 link American Composers Alliance:  composers.com/
 link Boosey & Hawkes: www.boosey.com
 link Breitkopf & Härtel: www.breitkopf.com

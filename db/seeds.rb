@@ -158,11 +158,17 @@ end
 
 links = open("db/musicandhistory/LINKS.txt")
 category = nil
+description = nil
 links.readlines.each do |line|
+  m = line.match(/description\s+/)
+  if m
+    description = m.post_match
+  end
   m = line.match(/^category\s+/)
   if m
     name = m.post_match
-    category = LinkCategory.create(name: name)
+    category = LinkCategory.create(name: name, description: description)
+    description = nil
   end
 
   m = line.match(/^link\s+/)
