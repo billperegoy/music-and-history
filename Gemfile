@@ -47,8 +47,6 @@ group :development do
 end
 
 gem 'textractor'
-gem 'administrate'
-gem "administrate-field-image"
 gem 'clearance'
 gem 'puma'
 gem 'rails_12factor'
