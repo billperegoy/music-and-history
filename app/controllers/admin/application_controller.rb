@@ -6,6 +6,8 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    include Clearance::Controller
+    include Clearance::Authentication
     before_filter :authenticate_admin
 
     def authenticate_admin
