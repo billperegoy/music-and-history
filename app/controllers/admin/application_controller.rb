@@ -9,7 +9,7 @@ module Admin
     before_filter :authenticate_admin
 
     def authenticate_admin
-      # TODO Add authentication logic here.
+      require_login
     end
 
     # Override this value to specify the number of elements to display at a time
