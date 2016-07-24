@@ -32,9 +32,6 @@ class UserDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
-    :created_at,
-    :updated_at,
     :email,
     :encrypted_password,
     :confirmation_token,

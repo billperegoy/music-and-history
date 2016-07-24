@@ -39,11 +39,7 @@ class EventDashboard < Administrate::BaseDashboard
     :category,
     :event_composer_connectors,
     :composers,
-    :id,
     :date,
-    :created_at,
-    :updated_at,
-    :image,
     :caption,
   ].freeze
 

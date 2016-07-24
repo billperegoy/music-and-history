@@ -23,7 +23,6 @@ class PageDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :page_photos,
-    :id,
     :name,
     :content,
   ].freeze
@@ -32,11 +31,8 @@ class PageDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :page_photos,
-    :id,
     :name,
     :content,
-    :created_at,
-    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES

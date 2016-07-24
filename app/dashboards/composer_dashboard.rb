@@ -25,7 +25,6 @@ class ComposerDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :event_composer_connectors,
     :events,
-    :id,
     :first_name,
   ].freeze
 
@@ -34,11 +33,8 @@ class ComposerDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :event_composer_connectors,
     :events,
-    :id,
     :first_name,
     :last_name,
-    :created_at,
-    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
