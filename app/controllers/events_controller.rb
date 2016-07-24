@@ -16,7 +16,6 @@ class EventsController < ApplicationController
   end
 
   private
-  include ControllerHelpers
   def date_range?
     events_params[:start_year]
   end

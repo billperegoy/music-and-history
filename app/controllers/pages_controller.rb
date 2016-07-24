@@ -3,7 +3,4 @@ class PagesController < ApplicationController
     @random_event = random_event_on_this_date_in_history
     @page = Page.find_by(name: 'about')
   end
-
-  private
-  include ControllerHelpers
 end

@@ -3,7 +3,4 @@ class HyperlinksController < ApplicationController
     @random_event = random_event_on_this_date_in_history
     @link_categories = LinkCategory.all
   end
-
-  private
-  include ControllerHelpers
 end

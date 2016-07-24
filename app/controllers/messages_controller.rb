@@ -18,8 +18,6 @@ class MessagesController < ApplicationController
   end
 
 private
-  include ControllerHelpers
-
   def message_params
     params.require(:message).permit(:name, :email, :content)
   end

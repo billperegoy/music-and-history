@@ -17,8 +17,6 @@ class DateSelectsController < ApplicationController
   end
 
 private
-  include ControllerHelpers
-
   def date_select_params
     params.require(:date_select).permit(:start_month, :start_day, :start_year,
                                         :end_month, :end_day, :end_year, :date_range
