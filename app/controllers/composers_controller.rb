@@ -1,7 +1,7 @@
 class ComposersController < ApplicationController
   def index
     @random_event = random_event_on_this_date_in_history
-    @composers = Composer.all
+    @composers = Composer.all.includes(:events)
   end
 
   def show

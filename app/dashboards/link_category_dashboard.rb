@@ -54,4 +54,7 @@ class LinkCategoryDashboard < Administrate::BaseDashboard
   # def display_resource(link_category)
   #   "LinkCategory ##{link_category.id}"
   # end
+  def display_resource(link_category)
+    "#{link_category.name}"
+  end
 end
