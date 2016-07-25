@@ -10,8 +10,10 @@ module Admin
     include Clearance::Authentication
     before_filter :authenticate_admin
 
+    LEGAL_USERS = ['bill@peregoy.org', 'annie@stodgy.com']
+
     def authenticate_admin
-      require_login
+      require_login && LEGAL_UUSERS.includes?(logged_in_user)
     end
 
     # Override this value to specify the number of elements to display at a time
@@ -19,5 +21,9 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 20
     # end
+  end
+
+  def logged_in_user
+    current_user.email
   end
 end
