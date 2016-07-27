@@ -96,15 +96,53 @@ def process_event(date, description, category_lookup, composer_lookup)
   end
 
   category = categorize_description(description, category_lookup)
-  eventpic = (rand(2) == 0) ? nil : "eventpicture-thumb.png"
-  event_caption = eventpic ? "A caption" : nil
+  eventpic = nil
+  event_caption = nil
+  #eventpic = (rand(2) == 0) ? nil : "eventpicture-thumb.png"
+  #event_caption = eventpic ? "A caption" : nil
   event = Event.create({date: date, category_id: category, description: description, image: eventpic, caption: event_caption})
   composers.each do |composer|
     EventComposerConnector.create(event_id: event.id, composer_id: composer) 
   end
 end
 
-def process_file(file_name, category_lookup, composer_lookup)
+def process_month_file(file_name, category_lookup, composer_lookup)
+  doc = Docx::Document.open(file_name)
+  html_doc = Nokogiri::HTML(doc.to_html) 
+  nodes = html_doc.xpath("//p")
+
+  date = nil
+  description = ""
+  nodes.each do |node|
+    if date && (description != "") && !description.match(/Paul Scharfenberger/)
+      process_event(date, description, category_lookup, composer_lookup)
+    end
+    description = ""
+    node.children.each do |child|
+      filtered_node_text = child.to_s.
+        gsub(/\<strong\>/, '').
+        gsub(/\<\/strong\>/, '').
+        gsub(/\<em\>/, '<i>').
+        gsub(/\<\/em\>/, '</i>').
+        gsub(/^ */, '').
+        gsub(/ *$/, '').
+        gsub(/  */, ' ')
+
+      m = filtered_node_text.match(/^\s*(?<day>\d+)\s+(?<month>\w+)\s+(?<year>\d+)/)
+      if m
+        if m['year'].to_i < 1752
+          date = "#{m['month']} #{m['day']} #{m['year']}"
+        else
+          date = nil
+        end
+      else
+        description += " #{filtered_node_text}"
+      end
+    end
+  end
+end
+
+def process_year_file(file_name, category_lookup, composer_lookup)
   doc = Docx::Document.open(file_name)
   html_doc = Nokogiri::HTML(doc.to_html)
   nodes = html_doc.xpath("//p")
@@ -130,7 +168,7 @@ def process_file(file_name, category_lookup, composer_lookup)
         if m
           date = "#{m['month']} #{m['day']} #{m['year']}"
         else
-          description += filtered_node_text
+          description += " #{filtered_node_text}"
         end
     end
   end
@@ -166,8 +204,29 @@ files = Dir.glob("db/musicandhistory/[0-9]*")
 files.each do |file|
   unless file.match(/anniversaries/)
     puts "Processing #{file}"
-    process_file(file, category_lookup, composer_lookup)
+    process_year_file(file, category_lookup, composer_lookup)
   end
+end
+
+
+files = ["january copy.docx",
+         "february copy.docx",
+         "march copy.docx",
+         "april copy.docx",
+         "may copy.docx",
+         "june copy.docx",
+         "july copy.docx",
+         "august copy.docx",
+         "september copy.docx",
+         "october copy.docx",
+         "november copy.docx",
+         "december copy.docx"
+        ]
+
+files.each do |filename|
+  file = "db/musicandhistory/#{filename}"
+  puts "Processing #{file}"
+  process_month_file(file, category_lookup, composer_lookup)
 end
 
 links = open("db/musicandhistory/LINKS.txt")
