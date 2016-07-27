@@ -1,5 +1,7 @@
 require 'csv'
 require 'textractor'
+require 'docx/html'
+require 'nokogiri'
 
 def create_resources_page
   resources = open("db/musicandhistory/resources_list.txt")
@@ -25,10 +27,6 @@ This survey begins in 1752. That was the year that the British Empire converted 
 
 <p>
 We have attempted to place everything in the Gregorian calendar. Dates are according to local time. (This can sometimes be confusing. For instance, the Japanese attack on Malaya on December 8, 1941 actually happened before their attack on Pearl Harbor on December 7, 1941.) Some attempt has been made to keep the chronological order for multiple items within one date, but this is next to impossible to ensure.
-</p>
-
-<p>
-Many composers are underrepresented in this survey. Click here to see a list of composers who should have more of their lives and works in these pages. If you know of sources where one may find biographical information, or information on first performances for any of these artists, please contact us. Any source you suggest must have exact dates.
 </p>
 
 <p>
@@ -86,38 +84,54 @@ def categorize_description(text, category_lookup)
   return category_lookup[:none]
 end
 
+def process_event(date, description, category_lookup, composer_lookup)
+  composers = []
+  composer_lookup.each do |composer|
+    name = "#{composer[:first_name]} #{composer[:last_name]}"
+    regexp = Regexp.new(name)
+    if description.match(regexp)
+      composers << composer[:id]
+      description = description.sub(regexp, "<a href=\"/composers/#{composer[:id]}\">#{name}<\/a>")
+    end
+  end
+
+  category = categorize_description(description, category_lookup)
+  eventpic = (rand(2) == 0) ? nil : "eventpicture-thumb.png"
+  event_caption = eventpic ? "A caption" : nil
+  event = Event.create({date: date, category_id: category, description: description, image: eventpic, caption: event_caption})
+  composers.each do |composer|
+    EventComposerConnector.create(event_id: event.id, composer_id: composer) 
+  end
+end
+
 def process_file(file_name, category_lookup, composer_lookup)
-  x = Textractor.text_from_path(file_name)
-  lines = x.split("\n")
-  
+  doc = Docx::Document.open(file_name)
+  html_doc = Nokogiri::HTML(doc.to_html)
+  nodes = html_doc.xpath("//p")
+
   date = nil
-  lines.each do |line|
-    next if line.length == 0
-    break if line.match(/Paul Scharfenberger/)
-    m = line.match(/^\s*(?<day>\d+)\s+(?<month>\w+)\s+(?<year>\d+)\s+(?<text>.*)$/)
-    if m
-      date = "#{m['month']} #{m['day']} #{m['year']}"
-      description =  m['text'].gsub(/ +/, ' ');
-    else
-      description = line.gsub(/ +/, ' ');
+  description = ""
+  nodes.each do |node|
+    if (description != "") && !description.match(/Paul Scharfenberger/)
+      process_event(date, description, category_lookup, composer_lookup)
     end
+    description = ""
+    node.children.each do |child|
+      filtered_node_text = child.to_s.
+        gsub(/\<strong\>/, '').
+        gsub(/\<\/strong\>/, '').
+        gsub(/\<em\>/, '<i>').
+        gsub(/\<\/em\>/, '</i>').
+        gsub(/^ */, '').
+        gsub(/ *$/, '').
+        gsub(/  */, ' ')
 
-    composers = []
-    composer_lookup.each do |composer|
-      name = "#{composer[:first_name]} #{composer[:last_name]}"
-      regexp = Regexp.new(name)
-      if description.match(regexp)
-        composers << composer[:id]
-        description = description.sub(regexp, "<a href=\"/composers/#{composer[:id]}\">#{name}<\/a>")
-      end
-    end
-
-    category = categorize_description(description, category_lookup)
-    eventpic = (rand(2) == 0) ? nil : "eventpicture-thumb.png"
-    event_caption = eventpic ? "A caption" : nil
-    event = Event.create({date: date, category_id: category, description: description, image: eventpic, caption: event_caption})
-    composers.each do |composer|
-      EventComposerConnector.create(event_id: event.id, composer_id: composer) 
+        m = filtered_node_text.match(/^\s*(?<day>\d+)\s+(?<month>\w+)\s+(?<year>\d+)/)
+        if m
+          date = "#{m['month']} #{m['day']} #{m['year']}"
+        else
+          description += filtered_node_text
+        end
     end
   end
 end 

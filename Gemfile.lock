@@ -73,6 +73,12 @@ GEM
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.2)
+    docx (0.1.0)
+      nokogiri (~> 1.5)
+      rubyzip (~> 0.9)
+    docx-html (0.1.0)
+      docx (~> 0.1.0)
+      html_writer (~> 0.1.0)
     email_validator (1.6.0)
       activemodel
     erubis (2.7.0)
@@ -82,6 +88,7 @@ GEM
       sass (>= 3.2)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    html_writer (0.1.0)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -153,6 +160,7 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    rubyzip (0.9.9)
     sass (3.4.22)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -198,9 +206,11 @@ DEPENDENCIES
   byebug
   clearance
   coffee-rails (~> 4.1.0)
+  docx-html
   font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   pg
   pg_search
   puma
