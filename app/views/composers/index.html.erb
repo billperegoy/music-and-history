@@ -4,9 +4,11 @@
     <% groups = @composers.group_by { |c| c.first_letter_of_last_name }%>
 
     <div class="page-content composers-content">
+      <div class="alphabet">
       <% groups.each_key do |letter| %>
         <span class="letters"><a href="#<%= letter.downcase %>"><%= letter %></a></span>
       <% end %>
+      </div><!--end alphabet-->
 
       <div class="composer-list">
         <% columns = composer_columns(groups) %>
