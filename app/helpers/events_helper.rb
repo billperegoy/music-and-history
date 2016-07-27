@@ -4,11 +4,11 @@ module EventsHelper
   end
 
   def formatted_date_no_year(date)
-    date.strftime("%B %d")
+    date.strftime("%B %-d")
   end
 
   def formatted_date(date)
-    date.strftime("%B %d, %Y")
+    date.strftime("%B %-d, %Y")
   end
 
   def event_icon_for_category(name)
@@ -59,6 +59,10 @@ module EventsHelper
     else
       ""
     end
+  end
+
+  def sorted_by_date(events)
+    events.sort_by { |event| event.date }
   end
 
   private

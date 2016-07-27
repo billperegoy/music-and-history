@@ -1,4 +1,3 @@
-<% sorted_events = events.sort_by {|event| event.date} %>
-<% sorted_events.each do |event| %>
+<% sorted_by_date(events).each do |event| %>
   <%= render partial: "events/single_event", locals: {event: event, type: type} %>
 <% end %>
