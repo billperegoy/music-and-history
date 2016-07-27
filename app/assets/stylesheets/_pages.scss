@@ -4,6 +4,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: $light-blue;
 }
 
 
@@ -61,7 +62,7 @@ fieldset {
   .headline-box {
     font-size: 36px;
     color: white;
-    width: 1000px;
+    width: 95%;
     padding: 20px 20px 20px 20px;
     @include border-top-radius(20px);
     @include border-bottom-radius(20px);
@@ -80,12 +81,8 @@ fieldset {
   }
 
 
-#date-select-end {
-  margin-top: 10px;
-    
-}
-
-.entire-date-picker {
+  #date-select-end {
+    margin-top: 10px;  
   }
 
 
@@ -94,7 +91,7 @@ fieldset {
     top: 175px;
     left: 900px;
     @include button;
-      }
+  }
 }
 
 
@@ -191,6 +188,15 @@ fieldset {
 }
 
 
+
+
+
+
+
+
+
+
+
 //////////////ABOUT/////////////
 
 .about-page {
@@ -228,6 +234,19 @@ fieldset {
     @include body-copy;
 }
 
+@media (max-width: 599px) {
+  .body-text p {
+    @include body-copy-smallphones;
+  }
+}  
+
+@media (min-width: 600px) and (max-width: 999px) {
+  .body-text p {
+    @include body-copy-bigphones;
+  }
+}  
+
+
 .body-text p:last-child {
   margin-bottom: 75px;
 }
@@ -245,7 +264,7 @@ fieldset {
 //////////////COMPOSERS/////////////
 
 .composers-page {
-  background-color: $light-orange;
+  background-color: tint($pink, 90%);
   padding-bottom: 100px;
     }
 
@@ -270,7 +289,7 @@ fieldset {
   letter-spacing: 15px; 
 }  
 
-.letters:first-child {
+.alphabet {
   margin-left: 30px;
 }
 
@@ -291,12 +310,32 @@ fieldset {
         }
 }
 
+@media (max-width: 599px) {
+.composer-letter-group {
+    @include body-copy-smallphones;
+    p {
+      margin: 10px 0px;
+        }
+      }
+}
+
+@media (min-width: 600px) and (max-width: 999px) {
+.composer-letter-group {
+    @include body-copy-smallphones;
+    p {
+      margin: 10px 0px;
+        }
+      }
+}
+
 
   
 //////////////EVENTS/////////////
 .events-page {
   background-color: $light-light-blue;
 }
+
+
 
 
 //////////////LINKS/////////////
@@ -306,7 +345,7 @@ fieldset {
 }
 
 .links-content {
-   @include display(flex);
+  @include display(flex);
   @include flex-direction(row);
  
 }
@@ -327,6 +366,8 @@ fieldset {
   background-color: tint($light-grey, 40%);
   padding-bottom: 100px;
 }
+
+
 
 
 

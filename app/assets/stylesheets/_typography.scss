@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400:700);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700);
 
+////////////////DEFINITIONS///////////////////////////////
+
+
 $quicksand-font-family: 'Quicksand', sans-serif;
 $roboto-slab-font-family: 'Roboto Slab', serif;
 $arial-font-family: 'Arial', sans-serif;
@@ -18,7 +21,23 @@ $treb: 'Terbuchet MS', sans-serif;
   line-height: 1.3em;
 }
 
+@mixin body-copy-bigphones {
+  font-family: $treb;
+  font-size: 14px;
+  color: $dark-grey;
+  line-height: 1.3em;
+}
 
+
+@mixin body-copy-smallphones {
+  font-family: $treb;
+  font-size: 12px;
+  color: $dark-grey;
+  line-height: 1.5em;
+}
+
+
+//////////////////////////////////////////////////////////////////
 
 h1 {
     font-family: $rob;
@@ -43,10 +62,46 @@ a {
 }
 
 
+.body-text p {
+  @include body-copy; 
+}
+
+
+@media (max-width: 599px) {
+  .body-text p {
+    @include body-copy-smallphones;
+  }
+}  
+
+@media (min-width: 600px) and (max-width: 999px) {
+  .body-text p {
+    @include body-copy-bigphones;
+  }
+}  
+
+
+
+
+
 ol, ul {
   @include body-copy;
   margin-right: 100px;
 }
+
+@media (max-width: 599px) {
+  ol li, ul li {
+    @include body-copy-smallphones;
+  }
+}  
+
+@media (min-width: 600px) and (max-width: 999px) {
+  ol, ul {
+    @include body-copy-bigphones;
+  }
+}  
+
+
+
 
 .picture-caption, .event-picture-caption {
   @include body-copy;
@@ -55,6 +110,18 @@ ol, ul {
 
 }
 
+
+@media (max-width: 599px) {
+  .picture-caption, .event-picture-caption {
+    @include body-copy-smallphones;
+  }
+}  
+
+@media (min-width: 600px) and (max-width: 999px) {
+  .picture-caption, .event-picture-caption {
+    @include body-copy-bigphones;
+  }
+}  
 
 
 
