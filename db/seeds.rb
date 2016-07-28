@@ -4,14 +4,27 @@ require 'docx/html'
 require 'nokogiri'
 
 def create_resources_page
-  resources = open("db/musicandhistory/resources_list.txt")
-  resources.readlines.each do |line|
-    begin
-    Resource.create(text: line)
-    rescue
-      # FIXME puts "Bad text: #{line}"
+  file_name = "db/musicandhistory/resources.docx" 
+  doc = Docx::Document.open(file_name)
+  html_doc = Nokogiri::HTML(doc.to_html)
+  nodes = html_doc.xpath("//p")
+  text = nil
+  nodes.each do |node|
+    if text
+      Resource.create(text: text.gsub(/ \./, '.'))
+    end
+    text = ""
+    node.children.each do |child|
+      filtered_node_text = child.to_s.
+        gsub(/\<\/em\>/, '</i>').
+        gsub(/\<em\>/, '<i>').
+        gsub(/^ */, '').
+        gsub(/ *$/, '').
+        gsub(/  */, ' ')
+      text += "#{filtered_node_text} "
     end
   end
+  Resource.create(text: text.gsub(/ \./, '.'))
 end
 
 def create_about_page
