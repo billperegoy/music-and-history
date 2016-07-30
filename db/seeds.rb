@@ -208,11 +208,17 @@ category_lookup = {
 }
 
 composer_lookup = []
+composer_last_name_counts = {}
 CSV.foreach("db/musicandhistory/composers-annie.csv") do |row|
   first_name = row[0]
   last_name = row[1]
   composer = Composer.create(first_name: first_name, last_name: last_name)
   composer_lookup << {id: composer.id, last_name: last_name,  first_name: first_name}
+  if composer_last_name_counts[last_name]
+    composer_last_name_counts[last_name] += 1
+  else
+    composer_last_name_counts[last_name] = 1
+  end
 end
 
 files = Dir.glob("db/musicandhistory/[0-9]*")
