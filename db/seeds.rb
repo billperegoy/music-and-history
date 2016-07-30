@@ -194,6 +194,8 @@ Composer.delete_all
 Page.delete_all
 Resource.delete_all
 
+create_resources_page
+
 category_birth = Category.create(name: 'birth')
 category_death = Category.create(name: 'death')
 category_performance = Category.create(name: 'performance')
@@ -266,4 +268,3 @@ links.readlines.each do |line|
 end
 
 create_about_page
-create_resources_page
