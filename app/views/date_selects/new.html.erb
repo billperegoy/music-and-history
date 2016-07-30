@@ -1,58 +1,42 @@
 <div class="landing-page-body" style="background-image: url(<%= random_background_image %>)">
-  
+
   <div class="headline-box">Choose a date to see what happened in music and history</div>
 
   <div class="date-error-message">
-  <% if @date_select.errors.any? %>
+    <% if @date_select.errors.any? %>
       <% @date_select.errors.full_messages.each do |message| %>
         <%= message %>
       <% end %>
     <% end %>
   </div>
 
- 
+  <div class="entire-date-picker">
+    <div class="date-picker-section">
+      <%= form_for @date_select, class: 'date-picker' do |f| %>
 
- 
-  
+        <div class="date-select date-select-start">
+          <%= f.select(:start_month, month_options, {}, {class: "month-picker-1"}) %>
+          <%= f.select(:start_day, day_options, {}, {class: "day-picker-1"}) %>
+          <%= f.text_field :start_year, placeholder: "Year", class: "year-picker-1" %>
+        </div>
 
-<div class="entire-date-picker"> 
-  <div class="date-picker-section">
-    <%= form_for @date_select, class: 'date-picker' do |f| %>
-      <div class="date-select date-select-start">
-        <%= f.select(:start_month, month_options, {}, {class: "month-picker-1"}) %>
-        <%= f.select(:start_day, day_options, {}, {class: "day-picker-1"}) %>
-        <%= f.text_field :start_year, placeholder: "Year", class: "year-picker-1" %>
-  </div><!-- end date picker section -->
-  
-  
-      
-     
-      <%= f.check_box :date_range, id: "date-range-checkbox" %>   
+        <%= f.check_box :date_range, id: "date-range-checkbox" %>
 
-      <div class="date-select" id="date-select-end">
-        <%= f.select(:end_month, month_options, {}, {class: "day-picker-2"}) %>
-        <%= f.select(:end_day, day_options, {}, {class: "day-picker-2"}) %>
-        <%= f.text_field :end_year, placeholder: "Year", class: "year-picker-2" %>
-      </div>
+        <div class="date-select" id="date-select-end">
+          <%= f.select(:end_month, month_options, {}, {class: "day-picker-2"}) %>
+          <%= f.select(:end_day, day_options, {}, {class: "day-picker-2"}) %>
+          <%= f.text_field :end_year, placeholder: "Year", class: "year-picker-2" %>
+        </div>
 
-      <div class="field" class="date-select">
-        <%= f.submit "go", class: "date-select-button" %>
-      </div>
-    
-    <% end %>
+        <div class="field" class="date-select">
+          <%= f.submit "go", class: "date-select-button" %>
+        </div>
+      <% end %>
 
-  
-   
-    
-   <div class="toggle-button">
+      <div class="toggle-button">
         <button></button>
         <div class="toggle-label">range</div>
       </div>
-
-      
-
+    </div>
   </div>
-
 </div>
- 
-</div><!-- landing page body -->
