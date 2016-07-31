@@ -97,14 +97,31 @@ def categorize_description(text, category_lookup)
   return category_lookup[:none]
 end
 
-def process_event(date, description, category_lookup, composer_lookup)
+def process_event(date, description, category_lookup, composer_lookup, composer_last_name_counts)
   composers = []
+  last_names_matched = []
+
+
+  # First look for complete first/last name matches
   composer_lookup.each do |composer|
     name = "#{composer[:first_name]} #{composer[:last_name]}"
     regexp = Regexp.new(name)
     if description.match(regexp)
+      last_names_matched << composer[:last_name]
       composers << composer[:id]
       description = description.sub(regexp, "<a href=\"/composers/#{composer[:id]}\">#{name}<\/a>")
+    end
+  end
+
+  # Now associate any last name mentions as best as is possible
+  composer_last_name_counts.each do |last_name, info|
+    if info[:count] == 1 && !last_names_matched.include?(last_name)
+      regexp = Regexp.new("#{last_name} \\(")
+      sub_regexp = Regexp.new("#{last_name}")
+      if description.match(regexp)
+        composers << info[:id]
+        description = description.sub(sub_regexp, "<a href=\"/composers/#{info[:id]}\">#{last_name}<\/a>")
+      end
     end
   end
 
@@ -117,9 +134,10 @@ def process_event(date, description, category_lookup, composer_lookup)
   composers.each do |composer|
     EventComposerConnector.create(event_id: event.id, composer_id: composer) 
   end
+
 end
 
-def process_month_file(file_name, category_lookup, composer_lookup)
+def process_month_file(file_name, category_lookup, composer_lookup, composer_last_name_counts)
   doc = Docx::Document.open(file_name)
   html_doc = Nokogiri::HTML(doc.to_html) 
   nodes = html_doc.xpath("//p")
@@ -128,7 +146,7 @@ def process_month_file(file_name, category_lookup, composer_lookup)
   description = ""
   nodes.each do |node|
     if date && (description != "") && !description.match(/Paul Scharfenberger/)
-      process_event(date, description, category_lookup, composer_lookup)
+      process_event(date, description, category_lookup, composer_lookup, composer_last_name_counts)
     end
     description = ""
     node.children.each do |child|
@@ -155,7 +173,7 @@ def process_month_file(file_name, category_lookup, composer_lookup)
   end
 end
 
-def process_year_file(file_name, category_lookup, composer_lookup)
+def process_year_file(file_name, category_lookup, composer_lookup, composer_last_name_counts)
   doc = Docx::Document.open(file_name)
   html_doc = Nokogiri::HTML(doc.to_html)
   nodes = html_doc.xpath("//p")
@@ -164,7 +182,7 @@ def process_year_file(file_name, category_lookup, composer_lookup)
   description = ""
   nodes.each do |node|
     if (description != "") && !description.match(/Paul Scharfenberger/)
-      process_event(date, description, category_lookup, composer_lookup)
+      process_event(date, description, category_lookup, composer_lookup, composer_last_name_counts)
     end
     description = ""
     node.children.each do |child|
@@ -215,17 +233,19 @@ CSV.foreach("db/musicandhistory/composers-annie.csv") do |row|
   composer = Composer.create(first_name: first_name, last_name: last_name)
   composer_lookup << {id: composer.id, last_name: last_name,  first_name: first_name}
   if composer_last_name_counts[last_name]
-    composer_last_name_counts[last_name] += 1
+    composer_last_name_counts[last_name] = {count: 2, id: nil}
   else
-    composer_last_name_counts[last_name] = 1
+    composer_last_name_counts[last_name] = {count: 1, id: composer.id}
   end
 end
+
+puts "COUNT: #{composer_last_name_counts.length}"
 
 files = Dir.glob("db/musicandhistory/[0-9]*")
 files.each do |file|
   unless file.match(/anniversaries/)
     puts "Processing #{file}"
-    process_year_file(file, category_lookup, composer_lookup)
+    process_year_file(file, category_lookup, composer_lookup, composer_last_name_counts)
   end
 end
 
@@ -247,7 +267,7 @@ files = ["january copy.docx",
 files.each do |filename|
   file = "db/musicandhistory/#{filename}"
   puts "Processing #{file}"
-  process_month_file(file, category_lookup, composer_lookup)
+  process_month_file(file, category_lookup, composer_lookup, composer_last_name_counts)
 end
 
 links = open("db/musicandhistory/LINKS.txt")
