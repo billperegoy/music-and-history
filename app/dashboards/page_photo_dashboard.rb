@@ -47,7 +47,7 @@ class PagePhotoDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how page photos are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(page_photo)
-  #   "PagePhoto ##{page_photo.id}"
-  # end
+  def display_resource(page_photo)
+    "#{page_photo.image}"
+  end
 end

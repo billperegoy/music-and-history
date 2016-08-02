@@ -205,6 +205,7 @@ def process_year_file(file_name, category_lookup, composer_lookup, composer_last
   end
 end 
 
+Hyperlink.delete_all
 LinkCategory.delete_all
 Category.delete_all
 Event.delete_all

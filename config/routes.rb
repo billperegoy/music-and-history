@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :categories
-resources :composers
-resources :events
-resources :event_composer_connectors
-resources :hyperlinks
-resources :link_categories
-resources :pages
-resources :page_photos
-resources :resources
-resources :users
+    resources :composers
+    resources :events
+    resources :event_composer_connectors
+    resources :hyperlinks
+    resources :link_categories
+    resources :pages
+    resources :page_photos
+    resources :resources
+    resources :users
 
-    root to: "categories#index"
+    root to: "events#index"
   end
 
   root to: "date_selects#new"

@@ -22,32 +22,32 @@ class PageDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :page_photos,
     :name,
     :content,
+    :page_photos,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :page_photos,
     :name,
     :content,
+    :page_photos,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :page_photos,
     :name,
     :content,
+    :page_photos,
   ].freeze
 
   # Overwrite this method to customize how pages are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(page)
-  #   "Page ##{page.id}"
-  # end
+  def display_resource(page)
+    "#{page.name}"
+  end
 end
