@@ -10,33 +10,53 @@
     <% end %>
   </div>
 
-  <div class="entire-date-picker">
-    <div class="date-picker-section">
-      <%= form_for @date_select, class: 'date-picker' do |f| %>
 
-        <div class="date-select date-select-start">
-          <%= f.select(:start_month, month_options, {}, {class: "month-picker-1"}) %>
-          <%= f.select(:start_day, day_options, {}, {class: "day-picker-1"}) %>
-          <%= f.text_field :start_year, placeholder: "Year", class: "year-picker-1" %>
+<div class="entire-date-picker"> 
+  <div class="date-picker-section">
+    <%= form_for @date_select, class: 'date-picker' do |f| %>
+      <div class="date-select date-select-start">
+        <%= f.select(:start_month, month_options, {}, {class: "month-picker-1"}) %>
+        <%= f.select(:start_day, day_options, {}, {class: "day-picker-1"}) %>
+        <%= f.text_field :start_year, placeholder: "Year", class: "year-picker-1" %>
+        <div class="toggle-button">
+          <button></button>
+          <div class="toggle-label">range</div>
         </div>
+           
+     
+  </div><!-- end date picker section -->
+  
+     
+      
+     
+      <%= f.check_box :date_range, id: "date-range-checkbox" %>   
 
-        <%= f.check_box :date_range, id: "date-range-checkbox" %>
+      <div class="date-select" id="date-select-end">
+        <%= f.select(:end_month, month_options, {}, {class: "day-picker-2"}) %>
+        <%= f.select(:end_day, day_options, {}, {class: "day-picker-2"}) %>
+        <%= f.text_field :end_year, placeholder: "Year", class: "year-picker-2" %>
+     
+     
 
-        <div class="date-select" id="date-select-end">
-          <%= f.select(:end_month, month_options, {}, {class: "day-picker-2"}) %>
-          <%= f.select(:end_day, day_options, {}, {class: "day-picker-2"}) %>
-          <%= f.text_field :end_year, placeholder: "Year", class: "year-picker-2" %>
-        </div>
+     
+</div><!--end entire date picker-->
 
-        <div class="field" class="date-select">
-          <%= f.submit "go", class: "date-select-button" %>
-        </div>
-      <% end %>
+          <div class="field" class="date-select">
+        <%= f.submit "go", class: "date-select-button" %>
+       </div>   
 
-      <div class="toggle-button">
-        <button></button>
-        <div class="toggle-label">range</div>
-      </div>
-    </div>
+      
+     
+
+    
+    <% end %>
+
+  
+      
+    
+  
+      
+
+>>>>>>> annie-branch
   </div>
 </div>

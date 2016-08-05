@@ -48,6 +48,7 @@ fieldset {
   display: none;
 }
 
+//required for toggle functionality
 #date-range-checkbox {
   display: none;
 }
@@ -85,12 +86,12 @@ fieldset {
     margin-top: 10px;  
   }
 
-
+//go button
   .date-select-button {
+    @include button;
     position: relative;
     top: 175px;
     left: 900px;
-    @include button;
   }
 }
 
@@ -111,7 +112,9 @@ fieldset {
   font-weight: normal;
   width: 100px;
   box-shadow: none;
+  margin-right: 15px;
 } 
+
 
 .toggle-label {
   position: relative;
@@ -122,7 +125,7 @@ fieldset {
 }
 
 
-.toggle-button { 
+.toggle-button, .toggle-button-selected { 
   background-color: white; 
   margin: 5px 0; 
   border-radius: 20px; 
@@ -130,10 +133,8 @@ fieldset {
   height: 24px; 
   cursor: pointer; 
   width: 50px; 
-  position: relative;
-  top: 48px;
-  left: 900px;
-  display: inline-block; 
+  position: absolute;
+  display: inline; 
   user-select: none; 
   -webkit-user-select: none;  
   -ms-user-select: none; 
@@ -161,9 +162,11 @@ fieldset {
 .toggle-button-selected { 
   background-color: $light-blue; 
   border: 2px solid #D0D0D0; 
+/*
   position: relative;
   top: 48px;
   left: 900px;
+*/
 }
 
 .toggle-button-selected button { 
