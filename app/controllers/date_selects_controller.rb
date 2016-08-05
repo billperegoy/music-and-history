@@ -11,7 +11,7 @@ class DateSelectsController < ApplicationController
     if @date_select.valid?
       redirect_to events_path(date_select_params)
     else
-      flash[:alert] = "Errpr on date select form."
+      flash[:alert] = "Error on date select form."
       render :new
     end
   end
