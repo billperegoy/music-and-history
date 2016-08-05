@@ -1,15 +1,19 @@
 <div class="landing-page-body" style="background-image: url(<%= random_background_image %>)">
-
+  
   <div class="headline-box">Choose a date to see what happened in music and history</div>
 
   <div class="date-error-message">
-    <% if @date_select.errors.any? %>
+  <% if @date_select.errors.any? %>
       <% @date_select.errors.full_messages.each do |message| %>
         <%= message %>
       <% end %>
     <% end %>
   </div>
 
+ 
+
+ 
+  
 
 <div class="entire-date-picker"> 
   <div class="date-picker-section">
@@ -57,6 +61,8 @@
   
       
 
->>>>>>> annie-branch
   </div>
+
 </div>
+ 
+</div><!-- landing page body -->
