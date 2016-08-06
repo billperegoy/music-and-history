@@ -9,7 +9,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <% if signed_in? %>
     <%= current_user.email %>
     <%= button_to "Edit site", admin_root_path, method: :get %>
