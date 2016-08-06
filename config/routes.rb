@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :events
     #resources :event_composer_connectors
     resources :hyperlinks
-    #resources :link_categories
+    resources :link_categories
     resources :pages
     resources :page_photos
     resources :resources
