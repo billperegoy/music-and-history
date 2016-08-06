@@ -85,14 +85,23 @@ fieldset {
   #date-select-end {
     margin-top: 10px;  
   }
+  
+ .form-container {
+   text-align: center;
+ } 
 
 //go button
   .date-select-button {
     @include button;
     position: relative;
-    top: 175px;
-    left: 900px;
+    top: 80px;
+    margin-top: 0px;
+
   }
+}
+
+.field {
+  height: 0px;
 }
 
 
