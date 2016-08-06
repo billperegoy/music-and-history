@@ -20,7 +20,7 @@ class DateSelect
     presence: true
 
   validates :start_year,
-    presence: true
+    presence: true, if: "date_range?"
 
   validates :end_year, 
     presence: true, if: "date_range?"

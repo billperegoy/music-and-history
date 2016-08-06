@@ -5,7 +5,7 @@
   <div class="date-error-message">
   <% if @date_select.errors.any? %>
       <% @date_select.errors.full_messages.each do |message| %>
-        <%= message %>
+        <p><%= message %></p>
       <% end %>
     <% end %>
   </div>

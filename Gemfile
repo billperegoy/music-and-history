@@ -56,3 +56,4 @@ gem 'font-awesome-sass'
 gem 'administrate'
 gem 'docx-html'
 gem 'nokogiri'
+gem 'pry-rails', :group => :development

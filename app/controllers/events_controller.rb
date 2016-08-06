@@ -3,13 +3,18 @@ class EventsController < ApplicationController
     if events_params[:search]
       @events = Event.search_description(events_params[:search])
     elsif events_params[:start_year]
-      if (events_params[:date_range] == "1")
+      if date_range?
         @events = Event.date_range(start_date, end_date)
       else
-        @events = Event.date_range(start_date, start_date)
+        if events_params[:start_year] == ""
+          @events = events_on_this_date_in_history(start_date.month, start_date.day)
+        else
+          @events = Event.date_range(start_date, start_date)
+        end
       end
     else
-      @events = events_on_this_date_in_history
+      today = Date.today
+      @events = events_on_this_date_in_history(today.month, today.day)
     end
 
     @random_event = random_event_on_this_date_in_history
@@ -17,7 +22,7 @@ class EventsController < ApplicationController
 
   private
   def date_range?
-    events_params[:start_year]
+    events_params[:date_range] == "1"
   end
 
   def events_params
