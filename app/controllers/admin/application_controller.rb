@@ -10,7 +10,7 @@ module Admin
     include Clearance::Authentication
     before_filter :authenticate_admin
 
-    LEGAL_USERS = ['bill@peregoy.org', 'annie@stodgy.com']
+    LEGAL_USERS = ['bill@peregoy.org', 'annie@stodgy.com', 'musihist@gmail.com']
 
     def authenticate_admin
       require_login && LEGAL_UUSERS.includes?(logged_in_user)
