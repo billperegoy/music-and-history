@@ -13,7 +13,7 @@ class EventDashboard < Administrate::BaseDashboard
     composers: Field::HasMany,
     id: Field::Number,
     date: Field::DateTime,
-    description: Field::String,
+    description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     image: Field::String,
