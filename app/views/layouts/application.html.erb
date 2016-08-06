@@ -12,6 +12,7 @@
 
   <% if signed_in? %>
     <%= current_user.email %>
+    <%= button_to "Edit site", admin_root_path, method: :get %>
     <%= button_to "Sign out", sign_out_path, method: :delete %>
   <% end %>
 
