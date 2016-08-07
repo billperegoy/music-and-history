@@ -12,8 +12,10 @@
     </div><!-- end event desc.  -->
 
     <div class= "event-picture-and-caption">
-      <div class="event-picture"><%= image_tag(event.image) %></div>
-      <div class="event-picture-caption"><%= event.caption %></div>
+      <% if event.image && (event.image.url != "none") %>
+        <div class="event-picture"><%= image_tag(event.image) %></div>
+        <div class="event-picture-caption"><%= event.caption %></div>
+      <% end %>
     </div><!-- end event picture and caption -->
  
   </div><!-- end event body -->

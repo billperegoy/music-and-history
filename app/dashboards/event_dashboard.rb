@@ -16,7 +16,8 @@ class EventDashboard < Administrate::BaseDashboard
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    image: Field::String,
+    #image: Field::String,
+    image: PaperclipField,
     caption: Field::String,
   }.freeze
 
@@ -28,6 +29,8 @@ class EventDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :date,
     :description,
+    :image,
+    :caption
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,6 +38,8 @@ class EventDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :date,
     :description,
+    :image,
+    :caption
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -44,6 +49,8 @@ class EventDashboard < Administrate::BaseDashboard
     :date,
     :description,
     :category,
+    :image,
+    :caption
   ].freeze
 
   # Overwrite this method to customize how events are displayed

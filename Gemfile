@@ -57,3 +57,4 @@ gem 'administrate'
 gem 'docx-html'
 gem 'nokogiri'
 gem 'pry-rails', :group => :development
+gem "paperclip", "~> 5.0.0"
