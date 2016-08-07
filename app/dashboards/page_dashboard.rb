@@ -24,7 +24,6 @@ class PageDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :content,
-    :page_photos,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

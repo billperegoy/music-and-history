@@ -2,14 +2,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :composers
     resources :events
-    #resources :event_composer_connectors
     resources :hyperlinks
-    resources :link_categories
     resources :pages
-    resources :page_photos
     resources :resources
-    resources :categories
-    #resources :users
 
     root to: "events#index"
   end
