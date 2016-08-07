@@ -77,12 +77,12 @@ link Harrison Birtwistle: www.universaledition.com/Sir-Harrison-Birtwistle/compo
 link Pierre Boulez: www.universaledition.com/Pierre-Boulez/composers-and-works/composer/88
 link Chen Yi: http://www.presser.com/composer/chen-yi/
 link Unsuk Chin: http://www.boosey.com/composer/unsuk+chin
-link http://www.schott-music.com/shop/persons/az/unsuk-chin/index.html
+link Unsuk Chin: http://www.schott-music.com/shop/persons/az/unsuk-chin/index.html
 link Michael Colgrass:  http://www.carlfischer.com/composer/colgrass-michael/
 link John Corigliano: http://www.musicsalesclassical.com/composer/short-bio/John-Corigliano
 link George Crumb: www.edition-peters.com/composer/Crumb-George
 link Michael Daugherty:  www.fabermusic.com/composers/michael-daugherty
-link http://www.peermusicclassical.com/composer/composerdetail.cfm?detail=daugherty
+link Michael Daugherty: http://www.peermusicclassical.com/composer/composerdetail.cfm?detail=daugherty
 link Peter Maxwell Davies: http://www.schott-music.com/shop/persons/featured/4482/
 link Peter Maxwell Davies: www.boosey.com/pages/cr/composer/composer_main.asp?composerid=2695
 link Peter Maxwell Davies: www.musicsalesclassical.com/composer/short-bio/Peter-Maxwell-Davies
@@ -106,11 +106,11 @@ link Helmut Lachenmann: https://www.breitkopf.com/search?autor=Lachenmann%2C+Hel
 link Helmut Lachenmann: http://www.schott-music.com/shop/persons/az/helmut-lachenmann/
 link Lowell Liebermann: http://www.presser.com/composer/liebermann-lowell/
 link Magnus Lindberg:  www.boosey.com/pages/cr/composer/composer_main.asp?composerid=2974
-link http://www.musicsalesclassical.com/composer/short-bio/magnus-lindberg
+link Magnus Lindberg: http://www.musicsalesclassical.com/composer/short-bio/magnus-lindberg
 link Jonathan Lloyd: www.boosey.com/pages/cr/composer/composer_main.asp?composerid=2816
 link Tod Machover: www.boosey.com/pages/cr/composer/composer_main.asp?composerid=20376
 link Steven Mackey: http://www.musicsalesclassical.com/composer/short-bio/steven-mackey
-link http://www.boosey.com/pages/cr/composer/composer_main.asp?composerid=2739&ttype=BIOGRAPHY&ttitle=Biography/
+link Steven Mackey: http://www.boosey.com/pages/cr/composer/composer_main.asp?composerid=2739&ttype=BIOGRAPHY&ttitle=Biography/
 link John Melby: http://www.presser.com/composer/melby-john/
 link Edgar Meyer: http://www.boosey.com/composer/Edgar+Meyer
 link Nico Muhly: http://www.musicsalesclassical.com/composer/short-bio/nico-muhly
