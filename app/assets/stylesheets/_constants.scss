@@ -45,6 +45,8 @@ $light-green: lighten($bright-green, 80%);
   }
 }
 
+
+
 @mixin border-radius15 {
   @include border-top-radius(15px);
   @include border-right-radius(15px);
@@ -62,7 +64,7 @@ $button-text-color: $light-blue;
 $link-color: $dark-blue;
 $button-outline-color: $dark-blue;
 $body-type-color: $dark-grey;
-$main-page-background-color: $light-yellow; 
+$main-page-background-color: $light-yellow;
 $today-in-history-bckground-color: $light-blue;
 $composers-page-background-color: $light-orange;
 $about-page-backgroud-color: $light-green;

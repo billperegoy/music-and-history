@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Music and History</title>
- 
+
   <%= favicon_link_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -10,9 +10,11 @@
 </head>
 <body>
   <% if signed_in? %>
-    <%= current_user.email %>
-    <%= button_to "Edit site", admin_root_path, method: :get, form: {target: '_blank'} %>
-    <%= button_to "Sign out", sign_out_path, method: :delete %>
+    <div class="signed-in-bar">
+    You are logged in as: <span class="signed-in-email-address"><%= current_user.email %></span>
+    <div class="signed-in-bar-buttons"><%= button_to "Edit site", admin_root_path, method: :get, form: {target: '_blank', class: "admin-button"} %>
+    <%= button_to "Sign out", sign_out_path, method: :delete, form: {class: "admin-button"} %></div>
+    </div>
   <% end %>
 
   <%= render "common/header" %>

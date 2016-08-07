@@ -37,6 +37,8 @@ $treb: 'Terbuchet MS', sans-serif;
 }
 
 
+
+
 //////////////////////////////////////////////////////////////////
 
 h1 {
@@ -68,7 +70,7 @@ a {
 
 
 .body-text p {
-  @include body-copy; 
+  @include body-copy;
 }
 
 
@@ -76,13 +78,13 @@ a {
   .body-text p {
     @include body-copy-smallphones;
   }
-}  
+}
 
 @media (min-width: 600px) and (max-width: 999px) {
   .body-text p {
     @include body-copy-bigphones;
   }
-}  
+}
 
 
 
@@ -97,13 +99,13 @@ ol, ul {
   ol li, ul li {
     @include body-copy-smallphones;
   }
-}  
+}
 
 @media (min-width: 600px) and (max-width: 999px) {
   ol, ul {
     @include body-copy-bigphones;
   }
-}  
+}
 
 
 
@@ -120,18 +122,10 @@ ol, ul {
   .picture-caption, .event-picture-caption {
     @include body-copy-smallphones;
   }
-}  
+}
 
 @media (min-width: 600px) and (max-width: 999px) {
   .picture-caption, .event-picture-caption {
     @include body-copy-bigphones;
   }
-}  
-
-
-
-
-
-
-
-
+}
