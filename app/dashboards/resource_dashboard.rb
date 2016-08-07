@@ -9,7 +9,7 @@ class ResourceDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    text: Field::String,
+    text: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
