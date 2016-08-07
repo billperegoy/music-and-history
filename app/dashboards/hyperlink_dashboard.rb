@@ -31,7 +31,6 @@ class HyperlinkDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :url,
-    :link_category,
   ].freeze
 
   # FORM_ATTRIBUTES

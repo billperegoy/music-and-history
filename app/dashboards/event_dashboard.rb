@@ -35,7 +35,6 @@ class EventDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :date,
     :description,
-    :category,
   ].freeze
 
   # FORM_ATTRIBUTES
