@@ -24,7 +24,6 @@ class HyperlinkDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :url,
-    :link_category,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -32,7 +31,6 @@ class HyperlinkDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :url,
-    :link_category,
   ].freeze
 
   # FORM_ATTRIBUTES

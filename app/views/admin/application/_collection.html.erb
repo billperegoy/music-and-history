@@ -60,7 +60,7 @@ to display a collection of resources in an HTML table.
           >
         <% collection_presenter.attributes_for(resource).each do |attribute| %>
           <td class="cell-data cell-data--<%= attribute.html_class %>">
-            <%= render_field attribute %>
+            <%= attribute.data.class == String  ? sanitize(attribute.data.truncate(75)) : attribute.data %>
           </td>
         <% end %>
 
@@ -71,7 +71,7 @@ to display a collection of resources in an HTML table.
         ) %></td>
 
         <td><%= link_to(
-          t("administrate.actions.destroy"),
+          "Delete",
           [namespace, resource],
           class: "table__action--destroy",
           method: :delete,
