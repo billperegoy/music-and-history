@@ -97,7 +97,7 @@ def categorize_description(text, category_lookup)
   return category_lookup[:none]
 end
 
-def process_event(date, description, category_lookup, composer_lookup, composer_last_name_counts)
+def process_event(date, description, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
   composers = []
   last_names_matched = []
 
@@ -110,6 +110,16 @@ def process_event(date, description, category_lookup, composer_lookup, composer_
       last_names_matched << composer[:last_name]
       composers << composer[:id]
       description = description.sub(regexp, "<a href=\"/composers/#{composer[:id]}\">#{name}<\/a>")
+    end
+  end
+
+  # Use any aliases
+  # FIXME
+  composer_aliases.each do |name, composer_id|
+    regexp = Regexp.new(name)
+    if description.match(regexp)
+      composers << composer_id
+      description = description.sub(regexp, "<a href=\"/composers/#{composer_id}\">#{name}<\/a>")
     end
   end
 
@@ -137,7 +147,7 @@ def process_event(date, description, category_lookup, composer_lookup, composer_
 
 end
 
-def process_month_file(file_name, category_lookup, composer_lookup, composer_last_name_counts)
+def process_month_file(file_name, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
   doc = Docx::Document.open(file_name)
   html_doc = Nokogiri::HTML(doc.to_html) 
   nodes = html_doc.xpath("//p")
@@ -146,7 +156,7 @@ def process_month_file(file_name, category_lookup, composer_lookup, composer_las
   description = ""
   nodes.each do |node|
     if date && (description != "") && !description.match(/Paul Scharfenberger/)
-      process_event(date, description, category_lookup, composer_lookup, composer_last_name_counts)
+      process_event(date, description, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
     end
     description = ""
     node.children.each do |child|
@@ -173,7 +183,7 @@ def process_month_file(file_name, category_lookup, composer_lookup, composer_las
   end
 end
 
-def process_year_file(file_name, category_lookup, composer_lookup, composer_last_name_counts)
+def process_year_file(file_name, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
   doc = Docx::Document.open(file_name)
   html_doc = Nokogiri::HTML(doc.to_html)
   nodes = html_doc.xpath("//p")
@@ -182,7 +192,7 @@ def process_year_file(file_name, category_lookup, composer_lookup, composer_last
   description = ""
   nodes.each do |node|
     if (description != "") && !description.match(/Paul Scharfenberger/)
-      process_event(date, description, category_lookup, composer_lookup, composer_last_name_counts)
+      process_event(date, description, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
     end
     description = ""
     node.children.each do |child|
@@ -210,6 +220,7 @@ LinkCategory.delete_all
 Category.delete_all
 Event.delete_all
 Composer.delete_all
+ComposerAlias.delete_all
 Page.delete_all
 Resource.delete_all
 
@@ -227,6 +238,7 @@ category_lookup = {
 }
 
 composer_lookup = []
+composer_aliases = {}
 composer_last_name_counts = {}
 CSV.foreach("db/musicandhistory/composers-annie.csv") do |row|
   first_name = row[0]
@@ -238,15 +250,22 @@ CSV.foreach("db/musicandhistory/composers-annie.csv") do |row|
   else
     composer_last_name_counts[last_name] = {count: 1, id: composer.id}
   end
-end
 
-puts "COUNT: #{composer_last_name_counts.length}"
+  # Add composer aliases
+  if row.length > 2
+    (2..row.length-1).each do |n|
+      ComposerAlias.create(name: row[n], composer_id: composer.id)
+      composer_aliases[row[n]] = composer.id
+    end
+  end
+end
+puts composer_aliases 
 
 files = Dir.glob("db/musicandhistory/[0-9]*")
 files.each do |file|
   unless file.match(/anniversaries/)
     puts "Processing #{file}"
-    process_year_file(file, category_lookup, composer_lookup, composer_last_name_counts)
+    process_year_file(file, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
   end
 end
 
@@ -268,7 +287,7 @@ files = ["january copy.docx",
 files.each do |filename|
   file = "db/musicandhistory/#{filename}"
   puts "Processing #{file}"
-  process_month_file(file, category_lookup, composer_lookup, composer_last_name_counts)
+  process_month_file(file, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
 end
 
 links = open("db/musicandhistory/LINKS.txt")
