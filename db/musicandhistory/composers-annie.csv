@@ -10,7 +10,7 @@ Isaac,Albeniz
 Heinrich,Albert
 Domenico,Alberti
 Tomaso Giovanni,Albinoni
-Johann Georg ,Albrechtsberger
+Johann Georg,Albrechtsberger
 William Hugh,Albright
 Francesco,Algarotti
 Charles-Valentin,Alkan
@@ -31,19 +31,19 @@ Daniel-François-Esprit,Auber
 Larry Don,Austin
 Charles,Avison
 Milton Byron,Babbitt
-Carl Philipp Emanuel,Bach
+Carl Philipp Emanuel,Bach,Carl Bach, CPE Bach, C.P.E. Bach
 Johann Christian,Bach
 Johann Christoph,Bach
-Johann Sebastian,Bach
-Wilhelm Friedemann,Bach
+Johann Sebastian,Bach, JS Bach, J.S. Bach
+Wilhelm Friedemann,Bach, Wilhelm Bach
 Mily Alyekseyevich,Balakirev
 Adriano,Banchieri
-Granville ,Bantock
+Granville,Bantock
 Samuel Osmond,Barber
 Bela,Bartok
 Leslie Raymond,Bassett
 Arnold Edward Trevor,Bax
-Amy Marcy Cheney,Beach
+Amy Marcy Cheney,Beach, Amy Marcy Cheney
 Ludwig van,Beethoven
 Vincenzo,Bellini
 Georg Anton,Benda
@@ -54,7 +54,7 @@ William Laurence,Bergsma
 Luciano,Berio
 Louis-Hector,Berlioz
 Christoph,Bernhard
-Leonard ,Bernstein
+Leonard,Bernstein
 Louise-Angélique,Bertin
 Heinrich Ignaz Franz von,Biber
 William,Billings
@@ -76,8 +76,8 @@ Giovanni,Bononcini
 Benjamin,Boretz
 Alyeksandr Porfiryevich,Borodin
 Dmytro Stepanovych,Bortnyansky
-Juliette Nadia,Boulanger
-Marie-Juliette Olga Lili,Boulanger
+Juliette Nadia,Boulanger, Juliette Boulanger
+Marie-Juliette Olga Lili,Boulanger, Marie-Juliette Boulanger
 Pierre,Boulez
 William,Boyce
 William,Brade
@@ -286,7 +286,7 @@ Louis Joseph Ferdinand,Hérold
 Henri,Herz
 Juan,Hidalgo
 Jennifer Elaine,Higdon
-,Hildegard of Bingen
+Hildegard of Bingen, Hidegard von Bingen
 Johann Adam,Hiller
 Lejaren Arthur,Hiller
 Paul,Hindemith
@@ -425,8 +425,8 @@ Claudio,Monteverdi
 Robert Arthur,Moog
 Alexander Vasilyevich,Mosolov
 Jean,Mouton
-Johann Chrysostom Wolfgang Amadeus,Mozart
-Johann Georg Leopold,Mozart
+Johann Chrysostom Wolfgang Amadeus,Mozart, Wolfgang Mozart, Wolfangang Amadeus Mozart
+Johann Georg Leopold,Mozart, Leopold Mozart
 Georg,Muffat
 Gottlieb,Muffat
 Nico,Muhly
@@ -545,7 +545,7 @@ Jeremy,Sams
 Giuseppe,Sarti
 Antonio,Sartorio
 Erik Alfred Leslie,Satie
-Giuseppe Domenico,Scarlatti
+Giuseppe Domenico,Scarlatti, Domenico Scarlatti
 Pietro Alessandro Gaspare,Scarlatti
 Pierre,Schaeffer
 Raymond Murray,Schafer
@@ -558,14 +558,14 @@ Joseph Moiseyevich,Schillinger
 Florent,Schmitt
 Arp,Schnitger
 Alfred Garriyevich,Schnittke
-Johann ,Schobert
+Johann,Schobert
 Arnold Franz Walter,Schoenberg
 Franz August Julius,Schreker
 Franz Peter,Schubert
 Gunther Alexander,Schuller
 Johann Abraham Peter,Schulz
 William Howard,Schuman
-Clara Josephine ,Schumann,Clara Josephine Wieck,Clara Wieck
+Clara Josephine,Schumann,Clara Josephine Wieck,Clara Wieck
 Robert,Schumann
 Heinrich,Schütz
 Joseph,Schwantner
