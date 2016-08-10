@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ComposerDashboard < Administrate::BaseDashboard
+class ComposerAliasDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,16 +8,10 @@ class ComposerDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    event_composer_connectors: Field::HasMany,
-    events: Field::HasMany,
-    composer_aliases: Field::HasMany,
-    id: Field::Number,
-    first_name: Field::String,
-    last_name: Field::String,
+    name: Field::String,
+    composer: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    biography: Field::Text,
-    photo: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,31 +20,28 @@ class ComposerDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :first_name,
-    :last_name,
+    :name,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :first_name,
-    :last_name,
-    :composer_aliases,
+    :name,
+    :composer
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :first_name,
-    :last_name,
-    :composer_aliases,
+    :name,
+    :composer
   ].freeze
 
   # Overwrite this method to customize how composers are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(composer)
-    "#{composer.last_name}, #{composer.first_name}"
+  def display_resource(composer_alias)
+    "#{composer_alias.name}"
   end
 end
