@@ -35,7 +35,7 @@ class ComposerDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :first_name,
     :last_name,
-    :composer_aliases,
+    #:composer_aliases,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -44,7 +44,7 @@ class ComposerDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :first_name,
     :last_name,
-    :composer_aliases,
+    #:composer_aliases,
   ].freeze
 
   # Overwrite this method to customize how composers are displayed
