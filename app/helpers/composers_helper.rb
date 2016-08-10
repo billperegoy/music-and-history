@@ -1,6 +1,10 @@
 module ComposersHelper
   def full_name(composer)
-    "#{composer.last_name}, #{composer.first_name}"
+    if composer.first_name
+      "#{composer.last_name}, #{composer.first_name}"
+    else
+      "#{composer.last_name}"
+    end
   end
 
   def composer_link(composer)
