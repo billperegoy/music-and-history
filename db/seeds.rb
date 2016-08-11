@@ -140,9 +140,13 @@ def process_event(date, description, category_lookup, composer_lookup, composer_
   event_caption = nil
   #eventpic = (rand(2) == 0) ? nil : "eventpicture-thumb.png"
   #event_caption = eventpic ? "A caption" : nil
-  event = Event.create({date: date, category_id: category, description: description, image: eventpic, caption: event_caption})
-  composers.each do |composer|
-    EventComposerConnector.create(event_id: event.id, composer_id: composer) 
+  if date == nil
+    puts "Error: nil date being added -- #{description}"
+  else
+    event = Event.create({date: date, category_id: category, description: description, image: eventpic, caption: event_caption})
+    composers.each do |composer|
+      EventComposerConnector.create(event_id: event.id, composer_id: composer) 
+  end
   end
 
 end
@@ -259,7 +263,6 @@ CSV.foreach("db/musicandhistory/composers-annie.csv") do |row|
     end
   end
 end
-puts composer_aliases 
 
 files = Dir.glob("db/musicandhistory/[0-9]*")
 files.each do |file|
