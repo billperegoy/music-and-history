@@ -1,6 +1,5 @@
 class MessageMailer < ActionMailer::Base
 
-  default from: message.name
   #default to: "musihist@gmail.com"
   default to: "bill@peregoy.org"
 
@@ -8,6 +7,7 @@ class MessageMailer < ActionMailer::Base
     @message = message
 
     mail subject: "Message from #{message.name}"
+    mail from: message.email
   end
 
 end
