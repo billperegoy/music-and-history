@@ -1,6 +1,9 @@
 class Event < ActiveRecord::Base
   include PgSearch
 
+  validates :description, presence: true
+  validates :date, presence: true
+
   belongs_to :category
   has_many :event_composer_connectors
   has_many :composers, through: :event_composer_connectors
