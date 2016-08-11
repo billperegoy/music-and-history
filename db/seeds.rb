@@ -94,7 +94,7 @@ def categorize_description(text, category_lookup)
     return category_lookup[:performance]
   end
 
-  return category_lookup[:none]
+  return category_lookup[:event]
 end
 
 def process_event(date, description, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
@@ -233,12 +233,12 @@ create_resources_page
 category_birth = Category.create(name: 'birth')
 category_death = Category.create(name: 'death')
 category_performance = Category.create(name: 'performance')
-category_none = Category.create(name: 'none')
+category_event = Category.create(name: 'event')
 category_lookup = {
   birth: category_birth.id,
   death: category_death.id,
   performance: category_performance.id,
-  none: category_none.id
+  event: category_event.id
 }
 
 composer_lookup = []

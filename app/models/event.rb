@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
 
   validates :description, presence: true
   validates :date, presence: true
+  validates :category_id, presence: true
 
   belongs_to :category
   has_many :event_composer_connectors
