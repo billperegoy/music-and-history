@@ -151,35 +151,55 @@ def process_event(date, description, category_lookup, composer_lookup, composer_
 
 end
 
+
 def process_month_file(file_name, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
   doc = Docx::Document.open(file_name)
-  html_doc = Nokogiri::HTML(doc.to_html) 
+  html_doc = Nokogiri::HTML(doc.to_html)
   nodes = html_doc.xpath("//p")
 
   date = nil
   description = ""
+  year = 2200
   nodes.each do |node|
-    if date && (description != "") && !description.match(/Paul Scharfenberger/)
+    if year == nil
+      year = 2200
+    end
+    skip = 0
+    if (year < 1752) && (description != "") && !description.match(/Paul Scharfenberger/)
       process_event(date, description, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
     end
     description = ""
-    node.children.each do |child|
-      filtered_node_text = filter_node(child)
 
-      m = filtered_node_text.match(/^\s*(?<day>\d+)\s+(?<month>\w+)\s+(?<year>\d+)/)
-      if m
-        if m['year'].to_i < 1752
-          date = "#{m['month']} #{m['day']} #{m['year']}"
-        else
-          date = nil
+    year = nil
+    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    first = filter_node(node.children[0])
+    second = filter_node(node.children[1])
+    match1 = first.match(/^\s*(?<day>\d+)\s+(?<month>\w+)\s+(?<year>\d+)/)
+    if match1
+      date = "#{match1['month']} #{match1['day']} #{match1['year']}"
+      skip = 1
+      year = match1['year'].to_i
+    else
+      match2 = first.match(/^\s*(?<day>\d+)\s+(?<month>\w+)/)
+      if first.match(/^\s*(?<day>\d+)\s+(?<month>\w+)/)
+        if months.include?(match2['month'])
+          skip = 2
+          date = "#{match2['month']} #{match2['day']} #{second}"
+          year = second.to_i
         end
-      else
+      end
+    end
+
+    node_count = 0
+    node.children.each do |child|
+      node_count += 1
+      if (node_count > skip)
+        filtered_node_text = filter_node(child)
         description += " #{filtered_node_text}"
       end
     end
   end
-end
-
+end 
 
 def filter_node(child)
   child.to_s.
