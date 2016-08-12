@@ -8,11 +8,7 @@ module ComposersHelper
   end
 
   def composer_link(composer)
-    if composer.events.any?
-      link_to full_name(composer), composer
-    else
-      full_name(composer)
-    end
+    link_to full_name(composer), composer
   end
 
   def composer_columns(groups)
