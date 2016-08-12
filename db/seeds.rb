@@ -15,12 +15,7 @@ def create_resources_page
     end
     text = ""
     node.children.each do |child|
-      filtered_node_text = child.to_s.
-        gsub(/\<\/em\>/, '</i>').
-        gsub(/\<em\>/, '<i>').
-        gsub(/^ */, '').
-        gsub(/ *$/, '').
-        gsub(/  */, ' ')
+      filtered_node_text = filter_node(child)
       text += "#{filtered_node_text} "
     end
   end
@@ -141,12 +136,16 @@ def process_event(date, description, category_lookup, composer_lookup, composer_
   #eventpic = (rand(2) == 0) ? nil : "eventpicture-thumb.png"
   #event_caption = eventpic ? "A caption" : nil
   if date == nil
+    date = "January 1 1925"
     puts "Error: nil date being added -- #{description}"
-  else
-    event = Event.create({date: date, category_id: category, description: description, image: eventpic, caption: event_caption})
-    composers.each do |composer|
-      EventComposerConnector.create(event_id: event.id, composer_id: composer) 
   end
+  xxx = description.match(/1 January 1925/)
+  if xxx
+    description = xxx.post_match
+  end
+  event = Event.create({date: date, category_id: category, description: description, image: eventpic, caption: event_caption})
+  composers.each do |composer|
+    EventComposerConnector.create(event_id: event.id, composer_id: composer) 
   end
 
 end
@@ -164,14 +163,7 @@ def process_month_file(file_name, category_lookup, composer_lookup, composer_ali
     end
     description = ""
     node.children.each do |child|
-      filtered_node_text = child.to_s.
-        gsub(/\<strong\>/, '').
-        gsub(/\<\/strong\>/, '').
-        gsub(/\<em\>/, '<i>').
-        gsub(/\<\/em\>/, '</i>').
-        gsub(/^ */, '').
-        gsub(/ *$/, '').
-        gsub(/  */, ' ')
+      filtered_node_text = filter_node(child)
 
       m = filtered_node_text.match(/^\s*(?<day>\d+)\s+(?<month>\w+)\s+(?<year>\d+)/)
       if m
@@ -187,11 +179,24 @@ def process_month_file(file_name, category_lookup, composer_lookup, composer_ali
   end
 end
 
+
+def filter_node(child)
+  child.to_s.
+    gsub(/\<strong\>/, '').
+    gsub(/\<\/strong\>/, '').
+    gsub(/\<em\>/, '<i>').
+    gsub(/\<\/em\>/, '</i>').
+    gsub(/^ */, '').
+    gsub(/ *$/, '').
+    gsub(/  */, ' ')
+end
+
 def process_year_file(file_name, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
   doc = Docx::Document.open(file_name)
   html_doc = Nokogiri::HTML(doc.to_html)
   nodes = html_doc.xpath("//p")
 
+  skip = 0
   date = nil
   description = ""
   nodes.each do |node|
@@ -199,22 +204,31 @@ def process_year_file(file_name, category_lookup, composer_lookup, composer_alia
       process_event(date, description, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
     end
     description = ""
-    node.children.each do |child|
-      filtered_node_text = child.to_s.
-        gsub(/\<strong\>/, '').
-        gsub(/\<\/strong\>/, '').
-        gsub(/\<em\>/, '<i>').
-        gsub(/\<\/em\>/, '</i>').
-        gsub(/^ */, '').
-        gsub(/ *$/, '').
-        gsub(/  */, ' ')
 
-        m = filtered_node_text.match(/^\s*(?<day>\d+)\s+(?<month>\w+)\s+(?<year>\d+)/)
-        if m
-          date = "#{m['month']} #{m['day']} #{m['year']}"
-        else
-          description += " #{filtered_node_text}"
+    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    first = filter_node(node.children[0])
+    second = filter_node(node.children[1])
+    match1 = first.match(/^\s*(?<day>\d+)\s+(?<month>\w+)\s+(?<year>\d+)/)
+    if match1
+      date = "#{match1['month']} #{match1['day']} #{match1['year']}"
+      skip = 1
+    else
+      match2 = first.match(/^\s*(?<day>\d+)\s+(?<month>\w+)/)
+      if first.match(/^\s*(?<day>\d+)\s+(?<month>\w+)/)
+        if months.include?(match2['month'])
+          skip = 2
+          date = "#{match2['month']} #{match2['day']} #{second}"
         end
+      end
+    end
+
+    node_count = 0
+    node.children.each do |child|
+      node_count += 1
+      if (node_count > skip)
+        filtered_node_text = filter_node(child)
+        description += " #{filtered_node_text}"
+      end
     end
   end
 end 
