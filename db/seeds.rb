@@ -95,6 +95,7 @@ end
 def process_event(date, description, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
   composers = []
   last_names_matched = []
+  description = description.gsub(/ ,/, ',')
 
 
   # First look for complete first/last name matches
@@ -196,10 +197,10 @@ def process_year_file(file_name, category_lookup, composer_lookup, composer_alia
   html_doc = Nokogiri::HTML(doc.to_html)
   nodes = html_doc.xpath("//p")
 
-  skip = 0
   date = nil
   description = ""
   nodes.each do |node|
+    skip = 0
     if (description != "") && !description.match(/Paul Scharfenberger/)
       process_event(date, description, category_lookup, composer_lookup, composer_aliases, composer_last_name_counts)
     end
@@ -279,6 +280,7 @@ CSV.foreach("db/musicandhistory/composers-annie.csv") do |row|
 end
 
 files = Dir.glob("db/musicandhistory/[0-9]*")
+#files = Dir.glob("db/musicandhistory/1959*")
 files.each do |file|
   unless file.match(/anniversaries/)
     puts "Processing #{file}"
