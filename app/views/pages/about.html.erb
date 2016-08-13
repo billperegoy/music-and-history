@@ -1,0 +1,22 @@
+<div class="about-page">
+  <div class="page-box">
+
+    <section class="body-text">
+      <h1><%= @page.name.titleize %></h1>
+      <%= @page.content.html_safe %> 
+    </section>
+
+
+    <section class="about-sidebar">
+      <% @page.page_photos.each do |photo| %>
+        <div class="picture">
+          <%= image_tag(photo.image) %>
+        </div>
+        <div class="picture-caption">
+          <%= photo.caption %>
+        </div>
+      <% end %>
+    </section>
+
+  </div>
+</div>
