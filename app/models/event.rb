@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   belongs_to :category
   has_many :event_composer_connectors
   has_many :composers, through: :event_composer_connectors
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "none"
+  has_attached_file :image, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "none"
   do_not_validate_attachment_file_type :image
 
   def self.by_month(month)
