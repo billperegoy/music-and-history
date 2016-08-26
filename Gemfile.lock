@@ -84,6 +84,8 @@ GEM
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.2)
+    delayed_job (4.1.2)
+      activesupport (>= 3.0, < 5.1)
     docx (0.1.0)
       nokogiri (~> 1.5)
       rubyzip (~> 0.9)
@@ -238,6 +240,7 @@ DEPENDENCIES
   byebug
   clearance
   coffee-rails (~> 4.1.0)
+  delayed_job
   docx-html
   font-awesome-sass
   jbuilder (~> 2.0)

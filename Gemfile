@@ -60,3 +60,4 @@ gem 'pry-rails', :group => :development
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.3'
 gem 'lightbox2-rails'
+gem 'delayed_job'
