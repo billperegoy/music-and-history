@@ -8,6 +8,9 @@ class Event < ActiveRecord::Base
   belongs_to :category
   has_many :event_composer_connectors
   has_many :composers, through: :event_composer_connectors
+
+  before_save :remove_outer_paragraph_tag
+
   has_attached_file :image, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "none"
   do_not_validate_attachment_file_type :image
 
@@ -22,4 +25,8 @@ class Event < ActiveRecord::Base
   scope :date_range, lambda {|start_date, end_date| where("date >= ? AND date <= ?", start_date, end_date )}
 
   pg_search_scope :search_description, :against => [:description]
+
+  def remove_outer_paragraph_tag
+    self.description = self.description.sub(/^\s*\<p\>/, '').sub(/\<\/p\>/, '')
+  end
 end
