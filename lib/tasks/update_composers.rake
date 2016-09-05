@@ -34,9 +34,9 @@ def look_for_new_matches(description, composer_map, existing_composers)
     end
   end
   # Get rid of the span put in by cut/paste from Word.
-  if new_description.match(/<span>/)
+  if new_description.match(/^<span/)
     puts "Before: #{new_description}"
-    new_description = new_description.sub(/<span[^>]*>/, '').sub(/<\/span>/, '')
+    new_description = new_description.sub(/^<span[^>]*>/, '').sub(/<\/span>/, '')
     puts "After: #{new_description}"
   end
   {description: new_description, composer_ids: composers_to_map}
