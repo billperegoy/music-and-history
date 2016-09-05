@@ -33,6 +33,7 @@ def look_for_new_matches(description, composer_map, existing_composers)
       end
     end
   end
+  new_description.sub(/^<span[^>]*>/, '').sub(/<\/span>/, '')
   {description: new_description, composer_ids: composers_to_map}
 
 end
@@ -53,10 +54,10 @@ def process_all_events(composer_map)
     result = look_for_new_matches(event.description, composer_map, existing_composers)
     if result[:description] != event.description
       puts "Performing update"
-      event.update(description: result[:description])
-      result[:composer_ids].each do |composer_id|
-        EventComposerConnector.create(composer_id: composer_id, event_id: event.id)
-      end
+      #event.update(description: result[:description])
+      #result[:composer_ids].each do |composer_id|
+      #  EventComposerConnector.create(composer_id: composer_id, event_id: event.id)
+      #end
     end
   end
 end
