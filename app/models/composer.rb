@@ -6,6 +6,8 @@ class Composer < ActiveRecord::Base
 
   validates :last_name, presence: true
 
+  default_scope { order(last_name: :asc, first_name: :asc) }
+
   def first_letter_of_last_name
     last_name[0,1]
   end
